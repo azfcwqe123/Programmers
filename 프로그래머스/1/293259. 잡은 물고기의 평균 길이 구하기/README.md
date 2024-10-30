@@ -125,3 +125,16 @@
       </table>
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+NVL 함수는 Oracle SQL에서 사용되는 함수로 MySQL에서는 존재하지 않는다. MySQL에서는 IFNULL 함수를 사용해 NULL 값을 대체할 수 있다.
+
+```SQL
+SELECT ROUND(AVG(IFNULL(A.LENGTH, 10)),2) AS AVERAGE_LENGTH
+FROM FISH_INFO A
+```
+
+IFNULL(A, B) -> A 컬럼에 있는 값이 NULL이면 B로 대체한다. NULL이 아니라면 값 그대로 출력한다.
+
