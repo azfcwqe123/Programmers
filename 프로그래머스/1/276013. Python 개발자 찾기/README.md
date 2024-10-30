@@ -169,3 +169,40 @@
       </table>
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+
+---
+첫 풀이 (오답)
+```SQL
+SELECT ID, EMAIL, FIRST_NAME, LAST_NAME
+FROM DEVELOPER_INFOS
+WHERE SKILL_3 = 'Python'
+ORDER BY ID;
+```
+무지몽매했던 풀이
+
+---
+
+수정
+```SQL
+SELECT ID, EMAIL, FIRST_NAME, LAST_NAME
+FROM DEVELOPER_INFOS
+WHERE SKILL_1 = 'Python' OR SKILL_2 = 'Python' OR SKILL_3 = 'Python'
+ORDER BY ID;
+```
+
+---
+
+IN() 사용 
+```SQL
+SELECT ID, EMAIL, FIRST_NAME, LAST_NAME
+FROM DEVELOPER_INFOS
+WHERE 'Python' IN (SKILL_1, SKILL_2, SKILL_3)
+ORDER BY ID;
+```
+
+요소 IN (컬럼1, 컬럼2, 컬럼3)
+
+컬럼 IN (요소1, 요소2, 요소3)
+
+이러한 식으로도 사용 가능하다.
