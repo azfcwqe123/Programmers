@@ -124,3 +124,24 @@
       </table>
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+나의 풀이
+
+```SQL
+SELECT COUNT(IFNULL(LENGTH,10)) AS FISH_COUNT
+FROM FISH_INFO
+WHERE LENGTH IS NULL;
+```
+
+---
+
+다른 풀이
+
+```SQL
+SELECT COUNT(*) AS FISH_COUNT
+FROM FISH_INFO
+WHERE LENGTH IS NULL;
+```
