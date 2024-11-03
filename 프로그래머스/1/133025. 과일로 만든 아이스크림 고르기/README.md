@@ -218,3 +218,17 @@ Empty
       </table>
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+INNER JOIN 사용
+```SQL
+SELECT A.FLAVOR AS FLAVOR
+FROM FIRST_HALF A JOIN ICECREAM_INFO B ON A.FLAVOR = B.FLAVOR
+WHERE A.TOTAL_ORDER > 3000 AND B.INGREDIENT_TYPE = 'fruit_based'
+GROUP BY FLAVOR
+ORDER BY TOTAL_ORDER DESC
+```
+
+LEFT JOIN을 사용해도 무방하다.
+
