@@ -128,3 +128,13 @@ Empty
       </table>
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+```SQL
+SELECT COUNT(USER_ID) AS USERS
+FROM USER_INFO
+WHERE AGE BETWEEN 20 AND 29
+AND YEAR(JOINED) = 2021
+```
