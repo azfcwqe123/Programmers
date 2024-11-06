@@ -1,7 +1,6 @@
 class Solution {
     public int solution(int num1, int num2) {
         
-        double ans = (double) num1 / num2 * 1000;
-        return (int) ans;        
+        return num1 * 1000 / num2;       
     }
 }
