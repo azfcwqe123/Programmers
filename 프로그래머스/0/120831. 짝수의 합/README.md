@@ -65,3 +65,43 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+i++, 조건
+
+```java
+class Solution {
+    public int solution(int n) {
+       
+        int sum = 0;
+        
+        for(int i=1; i<=n; i++) {
+            if(i % 2 == 0) sum += i;        
+        }
+        
+        return sum;
+        
+    }
+}
+```
+
+---
+
+i+=2
+
+```java
+class Solution {
+    public int solution(int n) {
+       
+        int sum = 0;
+        
+        for(int i=2; i<=n; i+=2) {
+            sum += i;        
+        }
+        
+        return sum;
+        
+    }
+}
+```
