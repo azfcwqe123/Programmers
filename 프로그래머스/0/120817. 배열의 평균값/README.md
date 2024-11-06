@@ -69,3 +69,33 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+정석 풀이
+```java
+class Solution {
+    public double solution(int[] numbers) {
+        
+        int sum = 0;
+        
+        for(int i=0; i<numbers.length; i++) {
+            sum += numbers[i];    
+        }
+        
+        return (double) sum / numbers.length;
+    }
+}
+```
+
+---
+
+Stream 활용
+```java
+import java.util.Arrays;
+
+class Solution {
+    public double solution(int[] numbers) {
+        return Arrays.stream(numbers).average().orElse(0);
+    }
+}
+```
