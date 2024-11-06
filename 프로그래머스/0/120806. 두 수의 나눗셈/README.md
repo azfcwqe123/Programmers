@@ -82,3 +82,28 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+1. 정석적인 풀이 방법
+```java
+class Solution {
+    public int solution(int num1, int num2) {
+        
+        double ans = (double) num1 / num2 * 1000;
+        return (int) ans;     
+    }
+}
+```
+
+---
+
+2. 발상의 전환
+```java
+class Solution {
+    public int solution(int num1, int num2) {
+        
+        return num1 * 1000 / num2;       
+    }
+}
+```
