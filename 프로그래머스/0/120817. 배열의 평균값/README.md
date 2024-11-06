@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 73.9 MB, 시간: 0.05 ms
+메모리: 75.3 MB, 시간: 2.79 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 11월 06일 18:58:11
+2024년 11월 06일 19:06:12
 
 ### 문제 설명
 
@@ -69,33 +69,3 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
->
----
-정석 풀이
-```java
-class Solution {
-    public double solution(int[] numbers) {
-        
-        int sum = 0;
-        
-        for(int i=0; i<numbers.length; i++) {
-            sum += numbers[i];    
-        }
-        
-        return (double) sum / numbers.length;
-    }
-}
-```
-
----
-
-Stream 활용
-```java
-import java.util.Arrays;
-
-class Solution {
-    public double solution(int[] numbers) {
-        return Arrays.stream(numbers).average().orElse(0);
-    }
-}
-```
