@@ -68,3 +68,38 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+정석 풀이
+
+```java
+class Solution {
+    public int[] solution(String[] strlist) {
+        
+        int arr[] = new int[strlist.length];
+        
+        for(int i=0; i<strlist.length; i++) {
+            arr[i] = strlist[i].length();    
+        }
+        
+        return arr;
+        
+    }
+}
+```
+
+---
+
+스트림 활용 풀이
+
+```java
+import java.util.Arrays;
+
+class Solution {
+    public int[] solution(String[] strlist) {      
+
+        return Arrays.stream(strlist).mapToInt(String::length).toArray();
+        
+    }
+}
+```
