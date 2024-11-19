@@ -67,3 +67,22 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+```java
+
+class Solution {
+    public int solution(int n) {
+        
+        return (Math.sqrt(n) % 1) == 0 ? 1 : 2; 
+    }
+}
+```
+
+정수 판별법
+- 숫자를 1로 나눴을때, 나머지가 0이면 정수, 아니라면 소수.
+
+ex) 2 % 1 = 0
+
+ex) 2.123 % 1 = 0.123
