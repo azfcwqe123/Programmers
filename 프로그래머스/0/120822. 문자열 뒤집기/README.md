@@ -67,3 +67,51 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+정석 풀이
+
+```java
+class Solution {
+    public String solution(String my_string) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        char[] arr = my_string.toCharArray();
+        
+        int lt = 0;
+        int rt = my_string.length() - 1;
+        
+        while(lt < rt) {
+            char tmp = arr[lt];
+            arr[lt] = arr[rt];
+            arr[rt] = tmp;
+            
+            lt++;
+            rt--;
+        }
+        
+        for(char x : arr) {
+            sb.append(x);
+        }
+        
+        return sb.toString();
+        
+    }
+}
+```
+
+---
+
+StringBuilder 메서드 이용
+
+```java
+class Solution {
+    public String solution(String my_string) {
+        
+        return new StringBuilder(my_string).reverse().toString();
+        
+    }
+}
+```
