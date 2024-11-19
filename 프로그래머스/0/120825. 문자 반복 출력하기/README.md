@@ -61,3 +61,45 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이
+
+```java
+class Solution {
+    public String solution(String str, int n) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        char[] arr = str.toCharArray();
+        
+        for(int i=0; i<arr.length; i++) {            
+            sb.append(String.valueOf(arr[i]).repeat(n));
+        }
+        
+        return sb.toString();
+        
+    }
+}
+```
+
+---
+
+두번째 풀이 (리팩토링)
+
+```java
+class Solution {
+    public String solution(String str, int n) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        for(char x : str.toCharArray()) { // 리팩토링한 부분
+            sb.append(String.valueOf(x).repeat(n));
+        }
+        
+        return sb.toString();
+        
+    }
+}
+```
