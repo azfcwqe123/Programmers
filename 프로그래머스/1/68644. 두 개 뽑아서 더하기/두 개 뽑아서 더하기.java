@@ -1,9 +1,13 @@
-import java.util.*;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.Iterator;
+import java.util.ArrayList;
 
 class Solution {
-    public int[] solution(int[] arr) {
+    public ArrayList solution(int[] arr) {
         
-        HashSet<Integer> set = new HashSet<>();
+        Set<Integer> set = new TreeSet<>();
+        ArrayList<Integer> list = new ArrayList<>();
         
         for(int i=0; i<arr.length; i++) {
             for(int j=i+1; j<arr.length; j++) {
@@ -11,19 +15,13 @@ class Solution {
             }    
         }
         
-        int[] arr2 = new int[set.size()];
-        
         Iterator<Integer> iter = set.iterator();
         
-        int i = 0;
         while(iter.hasNext()) {
-            arr2[i] = iter.next();
-            i++;
+            list.add(iter.next());
         }
         
-        Arrays.sort(arr2);
-        
-        return arr2;
+        return list;
         
     }
 }
