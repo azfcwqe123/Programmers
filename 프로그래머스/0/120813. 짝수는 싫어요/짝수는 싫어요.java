@@ -1,12 +1,7 @@
 class Solution {
     public int[] solution(int n) {
-        
-        int k = 0;
-        
-        if(n % 2 == 0) k = (n/2);
-        else k = (n/2) + 1;
-        
-        int[] arr = new int[k];
+                
+        int[] arr = new int[n % 2 == 0 ? (n/2) : (n/2) + 1];
         
         for(int i=0; i<arr.length; i++) {
             arr[i] = 2*i+1;
