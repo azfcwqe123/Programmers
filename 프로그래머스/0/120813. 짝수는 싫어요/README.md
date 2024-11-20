@@ -67,3 +67,71 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이
+
+```java
+class Solution {
+    public int[] solution(int n) {
+        
+        int k = 0;
+        
+        if(n % 2 == 0) k = (n/2);
+        else k = (n/2) + 1;
+        
+        int[] arr = new int[k];
+        
+        for(int i=0; i<arr.length; i++) {
+            arr[i] = 2*i+1;
+        }
+        
+        return arr;
+        
+    }
+}
+```
+
+---
+
+두번째 풀이, 삼항 연산자
+
+```java
+class Solution {
+    public int[] solution(int n) {
+                
+        int[] arr = new int[n % 2 == 0 ? (n/2) : (n/2) + 1];
+        
+        for(int i=0; i<arr.length; i++) {
+            arr[i] = 2*i+1;
+        }
+        
+        return arr;
+        
+    }
+}
+```
+
+---
+
+세번째 풀이, 배열리스트 활용
+
+```java
+import java.util.ArrayList;
+
+class Solution {
+    public ArrayList solution(int n) {
+                
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        for(int i=1; i<=n; i++) {
+            if(i % 2 != 0) list.add(i);
+        }
+        
+        return list;
+        
+    }
+}
+```
+
