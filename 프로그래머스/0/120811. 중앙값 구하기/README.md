@@ -69,3 +69,18 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+```java
+import java.util.Arrays;
+
+class Solution {
+    public int solution(int[] array) {
+        
+        Arrays.sort(array);
+        
+        return array[array.length / 2];
+    }
+}
+```
