@@ -67,3 +67,57 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이, 지수의 곱을 이용해서 약수의 개수를 구하는 공식
+
+```java
+class Solution {
+    public int solution(int n) {
+        
+        int[] check = new int[n+1];
+        int sum = 1;
+        
+        for(int i=2; i<=n; i++) { // 2부터 n까지의 숫자를 모두 약수로 돌려본다.
+            
+            while(true) {
+                 
+                if(n % i != 0) break;  // 만약 약수 i로 더이상 나눠지지 않는다면, 다음 약수로 넘어간다.
+                
+                n /= i;
+                
+                check[i]++; // 약수의 자리에 몇번 나왔는지 체크한다.
+            }
+            
+            if(check[i] != 0) { // 지수끼리 곱해서 약수의 개수를 구하는 공식을 사용한다.
+                sum *= (check[i] + 1);
+            }            
+        }
+   
+        return sum;
+    }
+}
+```
+
+---
+
+두번째 풀이, 간단하게 생각하기
+
+```java
+class Solution {
+    public int solution(int n) {
+        
+        int ans = 0;
+        
+        for(int i=1; i<=n; i++) {
+            if(n % i == 0) ans++;
+        }
+        
+        return ans;
+        
+    }
+}
+```
+
+1부터 n까지 나눠지는 숫자의 개수만 구해도 순서쌍의 개수를 구할 수 있다. 첫번째 풀이는 필요 이상으로 복잡하게 풀었다는 점을 명시하자.
