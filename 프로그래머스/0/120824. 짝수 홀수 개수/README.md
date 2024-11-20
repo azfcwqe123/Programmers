@@ -68,3 +68,43 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이
+
+```java
+class Solution {
+    public int[] solution(int[] arr) {
+        
+        int[] check = new int[2];
+        
+        for(int i=0; i<arr.length; i++) {
+            if(arr[i] % 2 == 0) {
+                check[0]++;
+            } else check[1]++;         
+        }
+        
+        return check;
+    }
+}
+```
+
+---
+
+리팩토링
+
+```java
+class Solution {
+    public int[] solution(int[] arr) {
+        
+        int[] check = new int[2];
+        
+        for(int i=0; i<arr.length; i++) {
+            check[arr[i] % 2]++;  
+        }
+        
+        return check;
+    }
+}
+```
