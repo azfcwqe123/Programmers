@@ -128,7 +128,7 @@ import java.util.*;
 class Solution {
     public ArrayList solution(int[] arr) {
         
-        HashSet<Integer> set = new HashSet<>();
+        HashSet<Integer> set = new HashSet<>(); 
         ArrayList<Integer> list = new ArrayList<>();
         
         for(int i=0; i<arr.length-1; i++) {
