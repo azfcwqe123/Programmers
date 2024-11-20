@@ -1,13 +1,15 @@
+import java.util.ArrayList;
+
 class Solution {
-    public int[] solution(int n) {
+    public ArrayList solution(int n) {
                 
-        int[] arr = new int[n % 2 == 0 ? (n/2) : (n/2) + 1];
+        ArrayList<Integer> list = new ArrayList<>();
         
-        for(int i=0; i<arr.length; i++) {
-            arr[i] = 2*i+1;
+        for(int i=1; i<=n; i++) {
+            if(i % 2 != 0) list.add(i);
         }
         
-        return arr;
+        return list;
         
     }
 }
