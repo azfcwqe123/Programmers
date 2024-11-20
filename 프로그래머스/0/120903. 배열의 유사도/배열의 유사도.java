@@ -3,12 +3,10 @@ class Solution {
         
         int ans = 0;
         
-        for(int i=0; i<s1.length; i++) {
-            
-            for(int j=0; j<s2.length; j++) {
-                if(s1[i].equals(s2[j])) ans++;    
+        for(String s : s1) {
+            for(String x : s2) {
+                if(s.equals(x)) ans++;
             }
-            
         }
         
         return ans;
