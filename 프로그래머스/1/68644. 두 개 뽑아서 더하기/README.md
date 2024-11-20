@@ -82,3 +82,130 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번쨰 풀이 HashSet + 배열
+
+```java
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] arr) {
+        
+        HashSet<Integer> set = new HashSet<>(); // 중복 제거를 해주는 해시셋을 이용한다.
+        
+        for(int i=0; i<arr.length-1; i++) {
+            for(int j=i+1; j<arr.length; j++) {
+                set.add(arr[i] + arr[j]);
+            }    
+        }
+        
+        int[] arr2 = new int[set.size()];
+        
+        Iterator<Integer> iter = set.iterator(); // Iterator을 이용해 해시셋에 있는 요소들을 반환할 준비를 한다.
+        
+        int i = 0;
+        while(iter.hasNext()) {
+            arr2[i] = iter.next();
+            i++;
+        }
+        
+        Arrays.sort(arr2); // 마지막엔 문제의 조건에 맞게 오름차순 정렬을 해준다.
+        
+        return arr2;
+        
+    }
+}
+```
+
+---
+
+두번째 풀이, 해시셋 + 배열리스트
+```java
+import java.util.*;
+
+class Solution {
+    public ArrayList solution(int[] arr) {
+        
+        HashSet<Integer> set = new HashSet<>();
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        for(int i=0; i<arr.length-1; i++) {
+            for(int j=i+1; j<arr.length; j++) {
+                set.add(arr[i] + arr[j]);
+            }    
+        }
+        
+        Iterator<Integer> iter = set.iterator();
+        
+        while(iter.hasNext()) {
+            list.add(iter.next());
+        }
+        
+        Collections.sort(list);
+        
+        return list;
+        
+    }
+}
+```
+
+---
+
+세번째 풀이, 트리셋 + 배열리스트
+
+```java
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.Iterator;
+import java.util.ArrayList;
+
+class Solution {
+    public ArrayList solution(int[] arr) {
+        
+        Set<Integer> set = new TreeSet<>(); // 중복 제거와 정렬을 해주는 트리셋을 이용한다.
+        ArrayList<Integer> list = new ArrayList<>(); 
+        
+        for(int i=0; i<arr.length; i++) {
+            for(int j=i+1; j<arr.length; j++) {
+                set.add(arr[i] + arr[j]);
+            }    
+        }
+        
+        Iterator<Integer> iter = set.iterator();
+        
+        while(iter.hasNext()) {
+            list.add(iter.next());
+        }
+        
+        return list;
+        
+    }
+}
+```
+
+---
+
+네번째 풀이, 트리셋 + 스트림
+
+```java
+import java.util.Set;
+import java.util.TreeSet;
+
+class Solution {
+    public int[] solution(int[] arr) {
+        
+        Set<Integer> set = new TreeSet<>();
+        
+        for(int i=0; i<arr.length-1; i++) {
+            for(int j=i+1; j<arr.length; j++) {
+                set.add(arr[i] + arr[j]);
+            }    
+        }
+        
+        return set.stream().mapToInt(Integer::intValue).toArray(); // 트리셋도 스트림을 이용해 배열로 변환할 수 있다.
+        
+    }
+}
+```
