@@ -73,3 +73,44 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이
+
+```java
+class Solution {
+    public int solution(String[] s1, String[] s2) {
+        
+        int ans = 0;
+        
+        for(int i=0; i<s1.length; i++) {
+            
+            for(int j=0; j<s2.length; j++) {
+                if(s1[i].equals(s2[j])) ans++;    
+            }            
+        }
+        
+        return ans;
+    }
+}
+```
+
+두번째 풀이, 향상된 for문으로
+
+```java
+class Solution {
+    public int solution(String[] s1, String[] s2) {
+        
+        int ans = 0;
+        
+        for(String s : s1) {
+            for(String x : s2) {
+                if(s.equals(x)) ans++;
+            }
+        }
+        
+        return ans;
+    }
+}
+```
