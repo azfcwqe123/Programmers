@@ -24,6 +24,12 @@ class Solution {
             if(maxScore == scores[i]) list.add(i+1);
         }
         
-        return list.stream().mapToInt(Integer::intValue).toArray();
+        int[] ansArr = new int[list.size()];
+        
+        for(int i=0; i<list.size(); i++) {
+            ansArr[i] = list.get(i);                
+        }
+        
+        return ansArr;
     }
 }
