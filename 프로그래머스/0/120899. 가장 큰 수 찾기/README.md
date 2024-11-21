@@ -69,3 +69,49 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이
+
+```java
+class Solution {
+    public int[] solution(int[] array) {
+        
+        int[] ans = {array[0], 0};
+        
+        for(int i=1; i<array.length; i++) {
+            if(array[i] > array[i-1]) {
+                ans[0] = array[i];
+                ans[1] = i;
+            }
+        }
+        
+        return ans;
+        
+    }
+}
+```
+
+---
+
+두번째 풀이(참고)
+
+```java
+class Solution {
+    public int[] solution(int[] array) {
+        
+        int[] ans = new int[2];
+        
+        for(int i=0; i<array.length; i++) {
+            if(array[i] > ans[0]) {
+                ans[0] = array[i];
+                ans[1] = i;
+            }
+        }
+        
+        return ans;
+        
+    }
+}
+```
