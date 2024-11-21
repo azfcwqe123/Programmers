@@ -95,7 +95,7 @@ class Solution {
 
 ---
 
-두번째 풀이(참고)
+두번째 풀이(참고), 이게 더 직관적인듯
 
 ```java
 class Solution {
