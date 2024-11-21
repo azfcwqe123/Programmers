@@ -78,3 +78,42 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+첫번째 풀이
+
+```java
+class Solution {
+    public int solution(int hp) {
+        
+        int ans = 0;
+        
+        ans += (hp / 5);
+        hp %= 5;
+        
+        ans += (hp / 3);
+        hp %= 3;
+        
+        ans += hp;
+        
+        return ans;
+        
+    }
+}
+```
+
+---
+
+두번째 풀이(참고)
+
+```java
+class Solution {
+    public int solution(int hp) {
+                
+        return (hp / 5) + (hp % 5) / 3 + hp % 5 % 3;
+        
+    }
+}
+```
