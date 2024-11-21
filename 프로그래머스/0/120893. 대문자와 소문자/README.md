@@ -68,3 +68,45 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이
+
+```java
+class Solution {
+    public String solution(String my_string) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        for(char x : my_string.toCharArray()) {
+            if(Character.isUpperCase(x)) sb.append(Character.toLowerCase(x));
+            if(Character.isLowerCase(x)) sb.append(Character.toUpperCase(x));
+        }
+        
+        return sb.toString();
+        
+    }
+}
+```
+
+---
+
+두번째 풀이
+
+```java
+class Solution {
+    public String solution(String my_string) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        for(char x : my_string.toCharArray()) {
+            if(x >= 'A'&& x <= 'Z') sb.append((char) (x + 32));
+            if(x >= 'a' && x <= 'z') sb.append((char) (x - 32));
+        }
+        
+        return sb.toString();
+        
+    }
+}
+```
