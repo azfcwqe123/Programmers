@@ -4,8 +4,8 @@ class Solution {
         StringBuilder sb = new StringBuilder();
         
         for(char x : my_string.toCharArray()) {
-            if(Character.isUpperCase(x)) sb.append(Character.toLowerCase(x));
-            if(Character.isLowerCase(x)) sb.append(Character.toUpperCase(x));
+            if(x >= 'A'&& x <= 'Z') sb.append((char) (x + 32));
+            if(x >= 'a' && x <= 'z') sb.append((char) (x -32));
         }
         
         return sb.toString();
