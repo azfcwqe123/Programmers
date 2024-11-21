@@ -83,3 +83,74 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이, 스트림 이용
+
+```java
+import java.util.ArrayList;
+
+class Solution {
+    public int[] solution(int n, int[] numlist) {
+        
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        for(int i=0; i<numlist.length; i++) {
+            if(numlist[i] % n == 0) list.add(numlist[i]);    
+        }
+        
+        return list.stream().mapToInt(Integer::intValue).toArray();
+        
+    }
+}
+```
+list.stream().mapToInt(i -> i).toArray();도 된다는점을 인지하자.
+
+---
+
+두번째 풀이, 직접 배열 구현
+
+```java
+import java.util.ArrayList;
+
+class Solution {
+    public int[] solution(int n, int[] numlist) {
+        
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        for(int i=0; i<numlist.length; i++) {
+            if(numlist[i] % n == 0) list.add(numlist[i]);    
+        }
+        
+        int[] ans = new int[list.size()];
+        
+        for(int i=0; i< list.size(); i++) {
+            ans[i] = list.get(i);
+        }
+        
+        return ans;
+        
+    }
+}
+```
+
+---
+세번째 풀이 (참고), 스트림만 이용
+
+```java
+import java.util.Arrays;
+
+class Solution {
+    public int[] solution(int n, int[] numlist) {
+        
+        return Arrays.stream(numlist).filter(x -> x % n == 0).toArray();
+        
+    }
+}
+```
+
+---
+
+
+스트림의 이용시간이 2ms 이상 더 걸린다는 점을 인지하자.
