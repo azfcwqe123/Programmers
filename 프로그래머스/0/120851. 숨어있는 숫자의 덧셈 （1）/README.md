@@ -76,3 +76,47 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이
+
+```java
+class Solution {
+    public int solution(String my_string) {
+        
+        char[] arr = my_string.toCharArray();
+        
+        int sum = 0;
+        
+        for(char x : arr) {
+            if(Character.isDigit(x)) sum += x - '0';   
+        }
+        
+        return sum;
+        
+    }
+}
+```
+
+---
+
+두번째 풀이(참고), replaceAll()
+
+```java
+class Solution {
+    public int solution(String my_string) {
+        
+        int sum = 0;
+        
+        String str = my_string.replaceAll("[^0-9]",""); // replaceAll()로 숫자 제외한 모든 문자를 제거한다.
+        
+        for(char x : str.toCharArray()) { // toCharArray()를 바로 향상된 for문에 사용 가능
+            sum += x - '0';    
+        }
+        
+        return sum;
+        
+    }
+}
+```
