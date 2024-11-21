@@ -1,10 +1,10 @@
 class Solution {
     public int[] solution(int[] array) {
         
-        int[] ans = {array[0], 0};
+        int[] ans = new int[2];
         
-        for(int i=1; i<array.length; i++) {
-            if(array[i] > array[i-1]) {
+        for(int i=0; i<array.length; i++) {
+            if(array[i] > ans[0]) {
                 ans[0] = array[i];
                 ans[1] = i;
             }
