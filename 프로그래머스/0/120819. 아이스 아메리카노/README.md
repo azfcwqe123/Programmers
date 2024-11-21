@@ -67,3 +67,33 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이
+
+```java
+class Solution {
+    public int[] solution(int money) {
+        int[] arr = new int[2];
+        
+        arr[0] = money / 5500;
+        arr[1] = money - 5500 * (money / 5500); // 너무 복잡하게 풀었음. 
+        
+        return arr;
+    }
+}
+```
+
+두번째 풀이(참고)
+
+---
+
+```java
+class Solution {
+    public int[] solution(int money) {
+        
+        return new int[] {money / 5500, money % 5500}; // new int[] 형태로 바로 리턴시킬 수 있다.
+    }
+}
+```
