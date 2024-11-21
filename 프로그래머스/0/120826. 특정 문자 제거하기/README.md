@@ -73,3 +73,38 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이, replaceAll()
+
+```java
+class Solution {
+    public String solution(String my_string, String letter) {
+        return my_string.replaceAll(letter,"");
+    }
+}
+```
+replace(letter,"");로 해도 무관하다.
+
+---
+
+두번째 풀이, 직접 구현
+
+```java
+class Solution {
+    public String solution(String my_string, String letter) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        for(int i=0; i<my_string.length(); i++) {
+            
+            if(my_string.charAt(i) != letter.charAt(0)) sb.append(String.valueOf(my_string.charAt(i)));
+                
+        }
+        
+        return sb.toString();
+        
+    }
+}
+```
