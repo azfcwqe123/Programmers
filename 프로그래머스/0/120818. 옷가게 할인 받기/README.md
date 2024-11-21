@@ -73,3 +73,41 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이
+
+```java
+class Solution {
+    public int solution(int price) {
+        
+        if(100_000 <= price && price < 300_000) {
+            return (int) (price * 0.95);   
+        } else if(300_000 <= price && price < 500_000) {
+            return (int) (price * 0.9);
+        } else if(price >= 500_000) {
+            return (int) (price * 0.8);
+        }
+        
+        return price;
+    }
+}
+```
+
+---
+
+두번째 풀이
+
+```java
+class Solution {
+    public int solution(int price) {
+        
+        if(price >= 500_000) return (int) (price * 0.8);
+        if(price >= 300_000) return (int) (price * 0.9);
+        if(price >= 100_000) return (int) (price * 0.95);
+        
+        return price;
+    }
+}
+```
