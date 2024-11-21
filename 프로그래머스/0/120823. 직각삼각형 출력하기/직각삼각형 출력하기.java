@@ -1,23 +1,17 @@
-import java.io.*;
-import java.util.*;
+import java.util.Scanner;
 
 public class Solution {
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        
-        int n = Integer.parseInt(br.readLine());
-        
-        StringBuilder sb = new StringBuilder();
-        
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
         for(int i=0; i<n; i++) {
-            
             for(int j=0; j<=i; j++) {
-                sb.append("*");
-            }
-            sb.append("\n");
+                System.out.print("*");
+            }    
+            System.out.println();
         }
         
-        System.out.print(sb);
         
     }
 }
