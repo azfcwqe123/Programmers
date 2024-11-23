@@ -78,3 +78,56 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+---
+
+첫번째 풀이
+
+```java
+import java.util.*;
+
+class Solution {
+    public int[] solution(String my_string) {
+        
+        char[] arr = my_string.replaceAll("[^0-9]", "").toCharArray(); // my_string.replaceAll("[A-Z|a-z]", "")와도 같다.
+        
+        int[] ans = new int[arr.length];
+        
+        for(int i=0; i<arr.length; i++) {
+            ans[i] = arr[i] - '0';
+        }
+        
+        Arrays.sort(ans);
+        
+        return ans;
+    }
+}
+```
+
+---
+
+두번째 풀이
+
+```java
+import java.util.ArrayList;
+import java.util.Collections;
+
+
+class Solution {
+    public int[] solution(String my_string) {
+        
+        String str = my_string.replaceAll("[^0-9]", "");
+        
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        for(char x : str.toCharArray()) {
+            list.add(x - '0');    
+        }
+        
+        Collections.sort(list);
+        
+        return list.stream().mapToInt(Integer::intValue).toArray();
+        
+    }
+}
+```
