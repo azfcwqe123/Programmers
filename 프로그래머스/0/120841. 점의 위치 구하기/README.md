@@ -80,3 +80,16 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+삼항 연산자 응용
+
+```java
+class Solution {
+    public int solution(int[] dot) {
+        
+        return dot[0] > 0 ? (dot[1] > 0 ? 1 : 4) : (dot[1] > 0 ? 2 : 3);
+    }
+}
+```
