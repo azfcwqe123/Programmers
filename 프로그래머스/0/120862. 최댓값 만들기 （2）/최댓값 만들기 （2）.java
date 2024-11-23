@@ -8,6 +8,6 @@ class Solution {
         int plus = numbers[numbers.length - 1] * numbers[numbers.length - 2];
         int minus = numbers[0] * numbers[1];
         
-        return plus > minus ? plus : minus;    
+        return Math.max(plus, minus);  
     }
 }
