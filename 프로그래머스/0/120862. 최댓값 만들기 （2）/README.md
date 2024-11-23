@@ -78,3 +78,43 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이, 삼항 연산자
+
+```java
+import java.util.Arrays;
+
+class Solution {
+    public int solution(int[] numbers) {
+        
+        Arrays.sort(numbers);
+        
+        int plus = numbers[numbers.length - 1] * numbers[numbers.length - 2];
+        int minus = numbers[0] * numbers[1];
+        
+        return plus > minus ? plus : minus;    
+    }
+}
+```
+
+---
+
+두번째 풀이, Math.max()
+
+```java
+import java.util.Arrays;
+
+class Solution {
+    public int solution(int[] numbers) {
+        
+        Arrays.sort(numbers);
+        
+        int plus = numbers[numbers.length - 1] * numbers[numbers.length - 2];
+        int minus = numbers[0] * numbers[1];
+        
+        return Math.max(plus, minus);  
+    }
+}
+```
