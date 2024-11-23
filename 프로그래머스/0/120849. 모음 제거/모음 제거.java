@@ -1,6 +1,16 @@
 class Solution {
     public String solution(String my_string) {
         
-        return my_string.replaceAll("[a|e|i|o|u]", "");
+        char[] arr = my_string.toCharArray();
+        
+        StringBuilder sb = new StringBuilder();
+        
+        for(int i=0; i<arr.length; i++) {
+            if(arr[i] == 'a' || arr[i] == 'e' || arr[i] == 'i' || arr[i] == 'o' || arr[i] == 'u') continue;
+            sb.append(arr[i]);
+        }
+        
+        return sb.toString();
+        
     }
 }
