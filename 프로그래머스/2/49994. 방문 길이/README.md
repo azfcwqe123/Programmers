@@ -101,3 +101,134 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+문제 : https://school.programmers.co.kr/learn/courses/30/lessons/49994
+
+---
+
+내 풀이(오답) / 1시간 도전
+
+```java
+class Solution {
+    public int solution(String dirs) {
+         
+        int[][] check = new int[11][11];
+        
+        int y = 5, x = 5;
+        
+        check[5][5] = 1;
+        
+        int cnt = 1;
+        
+        boolean TF = false;
+        
+        for(char ch : dirs.toCharArray()) {
+            
+            if(ch == 'U' && y > 0) {
+                check[y-1][x]++;
+                cnt++;              
+                
+                if(check[y-1][x] > 1) {
+                    cnt--;
+                    TF = true;
+                }
+                y--;
+            }
+            else if(ch == 'D' && y < 10) { 
+                check[y+1][x]++;
+                cnt++;        
+                
+                if(check[y+1][x] > 1) {
+                    cnt--;
+                    TF = true;
+                }
+                y++;
+            }
+            else if(ch == 'R' && x < 10) {
+                check[y][x+1]++;
+                cnt++;
+                
+                if(check[y][x+1] > 1) {
+                    cnt--;              
+                    TF = true;
+                }
+                x++;
+            }
+            else if(ch == 'L' && x > 0) {
+                check[y][x-1]++;
+                cnt++;
+                
+                if(check[y][x-1] > 1) {
+                    cnt--;                 
+                    TF = true;
+                }
+                x--;
+            }
+            
+        }
+        
+        if(!(TF)) cnt--;
+        
+        return cnt;
+        
+    }
+}
+```
+
+---
+
+참고 풀이
+
+```java
+import java.util.HashMap;
+import java.util.HashSet;
+
+class Solution {
+    
+    private static boolean isValidMove(int nx, int ny) { // 범위 체크
+        return 0 <= nx && nx < 11 && 0 <= ny && ny < 11;
+    }
+        
+    private static final HashMap<Character, int[]> location = new HashMap<>(); // 해시맵. 중요포인트
+        
+    private static void initLocation() {
+        location.put('U', new int[]{0, 1});
+        location.put('D', new int[]{0, -1});
+        location.put('L', new int[]{-1, 0});
+        location.put('R', new int[]{1, 0});
+    }
+    
+    public int solution(String dirs) {
+        initLocation();    
+        
+        int x = 5, y = 5;
+        
+        HashSet<String> answer = new HashSet<>(); // 중복을 제거하기 위한 해시셋
+        
+        for(char ch : dirs.toCharArray()) {
+            int[] offset = location.get(ch);
+            
+            int nx = x + offset[0];
+            int ny = y + offset[1];
+            
+            if(!isValidMove(nx,ny)) continue;
+
+            // A -> B와 B -> A의 경로는 같다.
+            answer.add(x + " " + y + " " + nx + " " + ny);
+            answer.add(nx + " " + ny + " " + x + " " + y);
+            
+            x = nx;
+            y = ny;
+        } 
+        
+        return answer.size() / 2; // 해시셋의 사이즈 반환
+        
+        
+    }
+}
+```
+
+중복을 포함하지 않는다는 문장이 나오면 해시셋을 생각하는게 좋다.
+&nbsp;
+
+좌표 관점인 원점을 (0,0)에서 배열 관점인 (5,5)로 바꾸는게 좋다.
