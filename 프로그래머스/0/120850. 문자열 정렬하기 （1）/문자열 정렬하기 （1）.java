@@ -1,18 +1,21 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+
 
 class Solution {
     public int[] solution(String my_string) {
         
-        char[] arr = my_string.replaceAll("[^0-9]", "").toCharArray();
+        String str = my_string.replaceAll("[^0-9]", "");
         
-        int[] ans = new int[arr.length];
+        ArrayList<Integer> list = new ArrayList<>();
         
-        for(int i=0; i<arr.length; i++) {
-            ans[i] = arr[i] - '0';
+        for(char x : str.toCharArray()) {
+            list.add(x - '0');    
         }
         
-        Arrays.sort(ans);
+        Collections.sort(list);
         
-        return ans;
+        return list.stream().mapToInt(Integer::intValue).toArray();
+        
     }
 }
