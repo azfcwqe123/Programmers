@@ -68,3 +68,64 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이
+
+```java
+class Solution {
+    public String solution(String my_string) {
+        
+        return my_string.replaceAll("[a|e|i|o|u]", "");
+    }
+}
+```
+my_string.replaceAll("[aeiou]", ""); 또한 같다.
+
+---
+
+두번째 풀이
+
+```java
+class Solution {
+    public String solution(String my_string) {
+        
+        char[] arr = my_string.toCharArray();
+        
+        StringBuilder sb = new StringBuilder();
+        
+        for(int i=0; i<arr.length; i++) {
+            if(arr[i] == 'a' || arr[i] == 'e' || arr[i] == 'i' || arr[i] == 'o' || arr[i] == 'u') continue;
+            sb.append(arr[i]);
+        }
+        
+        return sb.toString();
+        
+    }
+}
+```
+
+실수했던점
+
+- char 배열을 바로 문자형으로 바꾸려고 하니까, "실행한 결괏값 "n c  t  m  t y  "이 기댓값 "nc t mt y"과 다릅니다."와 같은 식으로 나왔다.
+
+
+아래는 잘못쓴 코드다.
+```java
+class Solution {
+    public String solution(String my_string) {
+        
+        char[] arr = my_string.toCharArray();
+        
+        for(int i=0; i<arr.length; i++) {
+            if(arr[i] == 'a' || arr[i] == 'e' || arr[i] == 'i' || arr[i] == 'o' || arr[i] == 'u') {
+                arr[i] = ' ';
+            }
+        }
+        
+        return String.valueOf(arr);
+        
+    }
+}
+```
