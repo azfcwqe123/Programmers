@@ -75,3 +75,41 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+첫번째 풀이, 배열 리스트 사용
+
+```java
+import java.util.ArrayList;
+
+class Solution {
+    public int[] solution(int[] numbers, int num1, int num2) {
+        
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        for(int i=num1; i<=num2; i++) {
+            list.add(numbers[i]);    
+        }
+        
+        return list.stream().mapToInt(x->x).toArray();
+        
+    }
+}
+```
+
+---
+
+두번째 풀이(참고), Arrays.copyOfRange() 사용
+```java
+import java.util.Arrays;
+
+class Solution {
+    public int[] solution(int[] numbers, int num1, int num2) {
+        
+        return Arrays.copyOfRange(numbers, num1, num2 + 1);
+            
+    }
+}
+```
