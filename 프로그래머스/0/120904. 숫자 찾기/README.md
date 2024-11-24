@@ -83,3 +83,20 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+내 풀이, indecOf() 사용
+
+```java
+class Solution {
+    public int solution(int num, int k) {
+        
+        int ans = String.valueOf(num).indexOf(String.valueOf(k)); // indexOf()는 문자열을 이용해서 사용한다.
+        
+        return ans == -1 ? -1 : ++ans;
+        
+    }
+}
+```
