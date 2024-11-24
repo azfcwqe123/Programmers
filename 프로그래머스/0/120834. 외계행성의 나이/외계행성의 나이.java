@@ -5,13 +5,13 @@ class Solution {
         
         StringBuilder sb = new StringBuilder();
         
+        char[] arr = {'a','b','c','d','e','f','g','h','i','j'};
+        
         while(age > 0) {
             
-            char ch = (char) (age % 10 + 'a');
+            sb.append(arr[age % 10]);
             
             age /= 10;
-            
-            sb.append(ch);
         }
         
         return sb.reverse().toString();
