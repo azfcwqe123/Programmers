@@ -75,3 +75,44 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이
+
+```java
+class Solution {
+    public int solution(int n) {
+        
+        int pizza = 6;
+        
+        while(true) {
+            
+            if(pizza % n == 0) return pizza / 6;
+            
+            pizza += 6;
+        }
+        
+    }
+}
+```
+
+---
+
+두번째 풀이
+
+```java
+class Solution {
+    public int solution(int n) {
+        
+        int pizza = 6;
+        
+        while(pizza % n != 0) {
+            pizza += 6;
+        }
+        
+        return pizza / 6;
+        
+    }
+}
+```
