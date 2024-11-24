@@ -1,10 +1,19 @@
-import java.util.Arrays;
-
 class Solution {
     public int solution(int[] numbers) {
         
-        Arrays.sort(numbers);
+        int max_V = numbers[0];
+        int prev_V = 0;
         
-        return numbers[numbers.length-2] * numbers[numbers.length-1];
+        for(int i=1; i<numbers.length; i++) {
+            if(numbers[i] > max_V) {
+                prev_V = max_V;
+                max_V = numbers[i];
+            } else if(numbers[i] > prev_V) {
+                prev_V = numbers[i];
+            }
+        }
+        
+        return max_V * prev_V;
+        
     }
 }
