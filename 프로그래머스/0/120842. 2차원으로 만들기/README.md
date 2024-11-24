@@ -87,3 +87,29 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+내 풀이
+```java
+class Solution {
+    public int[][] solution(int[] num_list, int n) {
+               
+        int[][] arr = new int[num_list.length / n][n]; // 여기 중요
+        
+        int k = 0;
+        
+        for(int i=0; i<num_list.length / n; i++) { // 행
+            
+            for(int j=0; j<n; j++) { // 열
+                arr[i][j] = num_list[k++];
+            }
+        }
+        
+        return arr;
+    }
+}
+```
+
+범위 오류 안 나게 잘 설정해야된다.
