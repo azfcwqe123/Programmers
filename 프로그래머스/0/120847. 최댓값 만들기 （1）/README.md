@@ -68,3 +68,46 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이, 배열 정렬 사용
+
+```java
+import java.util.Arrays;
+
+class Solution {
+    public int solution(int[] numbers) {
+        
+        Arrays.sort(numbers);
+        
+        return numbers[numbers.length-2] * numbers[numbers.length-1];
+    }
+}
+```
+
+---
+
+두번째 풀이(참고), 직접 구현
+
+```java
+class Solution {
+    public int solution(int[] numbers) {
+        
+        int max_V = numbers[0];
+        int prev_V = 0;
+        
+        for(int i=1; i<numbers.length; i++) {
+            if(numbers[i] > max_V) {
+                prev_V = max_V;
+                max_V = numbers[i];
+            } else if(numbers[i] > prev_V) {
+                prev_V = numbers[i];
+            }
+        }
+        
+        return max_V * prev_V;
+        
+    }
+}
+```
