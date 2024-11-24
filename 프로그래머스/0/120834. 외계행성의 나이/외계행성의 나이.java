@@ -5,21 +5,16 @@ class Solution {
         
         StringBuilder sb = new StringBuilder();
         
-        Stack<Character> stack = new Stack<>();
-        
         while(age > 0) {
+            
             char ch = (char) (age % 10 + 'a');
             
-            stack.push(ch);
-            
             age /= 10;
-        }
-        
-        while(!(stack.isEmpty())) {
             
-            sb.append(stack.pop());
+            sb.append(ch);
         }
         
-        return sb.toString();
+        return sb.reverse().toString();
+
     }
 }
