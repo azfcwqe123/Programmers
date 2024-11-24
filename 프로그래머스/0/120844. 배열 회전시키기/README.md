@@ -71,3 +71,40 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+내 풀이, 직접 구현
+
+```java
+class Solution {
+    public int[] solution(int[] numbers, String direction) {
+        
+        if(direction.equals("left")) {
+            
+            int tmp = numbers[0];
+            
+            for(int i=1; i<numbers.length; i++) {                
+                numbers[i-1] = numbers[i];
+            }
+            
+            numbers[numbers.length - 1] = tmp;
+            
+        } else if(direction.equals("right")) {
+            
+            int tmp = numbers[numbers.length - 1];
+            
+            for(int i=numbers.length-2; i>=0; i--) {
+                
+                numbers[i+1] = numbers[i];
+            }
+            
+            numbers[0] = tmp;            
+        }
+        
+        return numbers;
+    }
+}
+```
+
+Arrays.copy()을 사용하는것도 생각해봤지만, 배열 복사는 특정 범위만큼 복사하기에 할 엄두가 안 났다. 자바에서 배열의 크기는 임의로 늘릴 수 없기 때문이다.
