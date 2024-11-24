@@ -7,8 +7,6 @@ class Solution {
         HashMap<Character, Character> map = new HashMap<>();
         
         map.put(')', '(');
-        map.put('}', '{');
-        map.put(']', '[');
         
         Stack<Character> stack = new Stack<>();
         
