@@ -80,3 +80,26 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+참고 풀이
+
+```java
+class Solution {
+    public String solution(String cipher, int code) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        for(int i=code-1; i<cipher.length(); i += code) {
+            sb.append(cipher.charAt(i));
+        }
+        
+        return sb.toString();
+        
+    }
+}
+```
+
+for문의 조건식을 설정하는데 헷갈림. 숙지할 것
