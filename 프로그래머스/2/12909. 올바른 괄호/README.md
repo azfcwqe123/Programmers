@@ -70,3 +70,65 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+내 풀이1, 스택 이용
+
+```java
+import java.util.HashMap;
+import java.util.Stack;
+
+class Solution {
+    boolean solution(String s) {
+        
+        HashMap<Character, Character> map = new HashMap<>();
+        
+        map.put(')', '(');
+        
+        Stack<Character> stack = new Stack<>();
+        
+        for(char x : s.toCharArray()) {
+            
+            if(map.containsKey(x)) {
+                
+                if(stack.isEmpty()) return false;
+                else if(stack.pop().equals(map.get(x))) continue;
+            }
+            
+            else {
+                stack.push(x);
+            }
+            
+        }
+        
+        return stack.isEmpty();
+        
+    }
+}
+```
+
+---
+
+내 풀이2, 스택 이용X
+
+```java
+class Solution {
+    boolean solution(String s) {
+        
+        int cnt = 0;
+        
+        for(char x : s.toCharArray()) {
+            
+            if(x == '(') cnt++;
+            if(x == ')') cnt--;
+            
+            if(cnt < 0) return false;
+        }
+        
+        return cnt == 0 ? true : false;
+        
+    }
+}
+```
