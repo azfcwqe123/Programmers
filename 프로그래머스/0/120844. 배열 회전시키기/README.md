@@ -82,24 +82,23 @@ class Solution {
         
         if(direction.equals("left")) {
             
-            int tmp = numbers[0];
+            int tmp = numbers[0]; // 첫번째 배열의 원소를 임시로 저장한다.
             
             for(int i=1; i<numbers.length; i++) {                
                 numbers[i-1] = numbers[i];
-            }
+            } // 한 칸씩 다 왼쪽으로 밀어버린다.
             
-            numbers[numbers.length - 1] = tmp;
+            numbers[numbers.length - 1] = tmp; // 마지막 배열의 원소에 tmp을 대입한다.
             
         } else if(direction.equals("right")) {
             
-            int tmp = numbers[numbers.length - 1];
+            int tmp = numbers[numbers.length - 1]; // 마지막 배열의 원소를 임시로 저장한다.
             
-            for(int i=numbers.length-2; i>=0; i--) {
-                
+            for(int i=numbers.length-2; i>=0; i--) { // 한 칸씩 다 오른쪽으로 밀어버린다.
                 numbers[i+1] = numbers[i];
             }
             
-            numbers[0] = tmp;            
+            numbers[0] = tmp; // 첫번쨰 배열의 원소에 tmp을 대입한다.
         }
         
         return numbers;
