@@ -1,30 +1,17 @@
-import java.util.HashMap;
-import java.util.Stack;
-
 class Solution {
     boolean solution(String s) {
         
-        HashMap<Character, Character> map = new HashMap<>();
-        
-        map.put(')', '(');
-        
-        Stack<Character> stack = new Stack<>();
+        int cnt = 0;
         
         for(char x : s.toCharArray()) {
             
-            if(map.containsKey(x)) {
-                
-                if(stack.isEmpty()) return false;
-                else if(stack.pop().equals(map.get(x))) continue;
-            }
+            if(x == '(') cnt++;
+            if(x == ')') cnt--;
             
-            else {
-                stack.push(x);
-            }
-            
+            if(cnt < 0) return false;
         }
         
-        return stack.isEmpty();
+        return cnt == 0 ? true : false;
         
     }
 }
