@@ -79,3 +79,89 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이, 스택
+
+```java
+import java.util.Stack;
+
+class Solution {
+    public String solution(int age) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        Stack<Character> stack = new Stack<>();
+        
+        while(age > 0) { // age > 0으로 잡는것 또한 핵심 
+            char ch = (char) (age % 10 + 'a');
+            
+            stack.push(ch);
+            
+            age /= 10;
+        }
+        
+        while(!(stack.isEmpty())) {
+            
+            sb.append(stack.pop());
+        }
+        
+        return sb.toString();
+    }
+}
+```
+
+---
+
+두번째 풀이
+
+```java
+import java.util.Stack;
+
+class Solution {
+    public String solution(int age) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        while(age > 0) {
+            
+            char ch = (char) (age % 10 + 'a');
+            
+            age /= 10;
+            
+            sb.append(ch);
+        }
+        
+        return sb.reverse().toString();
+
+    }
+}
+```
+
+---
+
+세번째 풀이(참고), 배열 위치 이용
+
+```java
+import java.util.Stack;
+
+class Solution {
+    public String solution(int age) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        char[] arr = {'a','b','c','d','e','f','g','h','i','j'};
+        
+        while(age > 0) {
+            
+            sb.append(arr[age % 10]);
+            
+            age /= 10;
+        }
+        
+        return sb.reverse().toString();
+
+    }
+}
+```
