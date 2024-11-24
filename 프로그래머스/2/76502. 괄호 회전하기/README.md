@@ -183,3 +183,115 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+참고 풀이
+
+```java
+import java.util.Stack;
+import java.util.HashMap;
+
+class Solution {
+    public int solution(String s) {
+        
+        HashMap<Character, Character> map = new HashMap<>();
+        
+        map.put(')', '(');
+        map.put(']', '[');
+        map.put('}', '{');
+        
+        int n = s.length();
+        s += s;
+        
+        int ans = 0;
+        
+        A: for(int i=0; i<n; i++) {
+            Stack<Character> stack = new Stack<>();
+            
+            for(int j=i; j<i+n; j++) {
+                
+                char ch = s.charAt(j);
+                
+                if(!map.containsKey(ch)) {
+                    stack.push(ch);    
+                }
+                
+                else {
+                    if(stack.isEmpty() || !stack.pop().equals(map.get(ch))) {
+                        continue A;
+                    }
+                }                
+            }
+            
+            if(stack.isEmpty()) ans++;
+
+        }
+        
+        return ans;
+        
+    }
+}
+```
+> 해시맵 사용 정말 유용. 그리고 for문에 명칭 붙여서 원하는 곳으로 쉽게 이동할 수 있다.
+---
+
+내 풀이, 직접 구현
+
+```java
+import java.util.Stack;
+import java.util.HashMap;
+
+class Solution {
+    public int solution(String s) {
+        
+        int n = s.length();
+        int ans = 0;
+        s += s;
+        
+        A: for(int i=0; i<n; i++) {
+            
+            Stack<Character> stack = new Stack<>();
+            
+            for(int j=i; j<n+i; j++) {
+                    
+                if(stack.isEmpty() && (s.charAt(j) == ')' || s.charAt(j) == '}' || s.charAt(j) == ']')) {
+                    continue A;
+                }
+                
+                else if(s.charAt(j) == '(' || s.charAt(j) == '{' || s.charAt(j) == '[') {
+                    stack.push(s.charAt(j));
+                }
+                
+                else if(s.charAt(j) == ')') {
+                    if(stack.pop().equals('(')) continue;
+                    else continue A; 
+                }
+                
+                else if(s.charAt(j) == ']') {
+                    if(stack.pop().equals('[')) continue;
+                    else continue A; 
+                }
+                
+                else if(s.charAt(j) == '}') {
+                    if(stack.pop().equals('{')) continue;
+                    else continue A; 
+                }
+                
+            }
+            
+            if(stack.isEmpty()) ans++;
+            
+        }
+        
+        return ans;
+    }
+}
+```
+
+---
+
+그림 설명
+
+![스택](https://github.com/user-attachments/assets/ca4e57d1-895b-4752-badd-0a2fcc2796e0)
