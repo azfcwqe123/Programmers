@@ -1,12 +1,23 @@
 class Solution {
     public int solution(int i, int j, int k) {
         
-        StringBuilder sb = new StringBuilder();
+        int cnt = 0;
         
         for(int a=i; a<=j; a++) {
-            sb.append(a);    
+            
+            int tmp = a;
+            
+            while(tmp > 0) {
+                
+                if(tmp % 10 == k) cnt++;
+                
+                tmp /= 10;
+            }
+            
         }
         
-        return String.valueOf(sb).replaceAll("[^" + k  +"]", "").length();
+        return cnt;
+        
+
     }
 }
