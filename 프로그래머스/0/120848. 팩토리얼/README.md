@@ -71,3 +71,34 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+내 풀이
+
+```java
+class Solution {
+    public int solution(int n) {
+        
+        int cnt = 0;
+        int i= 1;
+        
+        while(factorial(i) <= n) {            
+            cnt++;
+            i++;
+        }
+        
+        return cnt;
+        
+    }
+    
+    public int factorial(int k) {
+    
+        if(k == 1) return 1;
+        else return k * factorial(k-1);
+        
+    }
+    
+}
+```
