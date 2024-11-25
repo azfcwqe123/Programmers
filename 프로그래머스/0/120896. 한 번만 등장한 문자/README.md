@@ -78,3 +78,75 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+첫번째 풀이
+
+```java
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+
+class Solution {
+    public String solution(String s) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        int[] arr = new int[26];
+        
+        for(char x : s.toCharArray()) {
+            arr[x - 'a']++;
+        }
+        
+        ArrayList<Character> list = new ArrayList<>(); 
+            
+        for(int i=0; i<26; i++) {
+            if(arr[i] == 1) list.add((char) (i + 'a'));
+        }
+        
+        Collections.sort(list);
+        
+        for(char x : list) {
+            sb.append(x);
+        }
+        
+        return sb.toString();
+        
+        
+    }
+}
+```
+
+---
+
+두번째 풀이(리팩토링, 참고)
+
+```java
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+
+class Solution {
+    public String solution(String s) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        int[] arr = new int[26];
+        
+        for(char x : s.toCharArray()) {
+            arr[x - 'a']++;
+        }
+            
+        for(int i=0; i<26; i++) {
+            if(arr[i] == 1) sb.append((char) (i + 'a'));
+        }
+        
+        return sb.toString();
+        
+    }
+}
+```
+
+굳이 배열리스트를 사용할 필요가 없었다. a부터 z까지 순차적으로 검증해서 삽입하니 이 자체가 오름차순 정렬이다.
