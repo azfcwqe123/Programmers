@@ -122,7 +122,7 @@ class Solution {
 ---
 
 두번째 풀이(리팩토링, 참고)
-
+https://school.programmers.co.kr/learn/courses/30/lessons/120896/solution_groups?language=java
 ```java
 import java.util.Arrays;
 import java.util.ArrayList;
