@@ -98,3 +98,149 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이, 해시맵 0.2ms ~ 0.4ms
+
+```java
+import java.util.HashMap;
+
+class Solution {
+    public String solution(String letter) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        HashMap<String, Character> map = new HashMap<>();
+        
+        map.put(".-", 'a');
+        map.put("-...", 'b');
+        map.put("-.-.", 'c');
+        map.put("-..", 'd');
+        map.put(".", 'e');
+        map.put("..-.", 'f');
+        map.put("--.", 'g');
+        map.put("....", 'h');
+        map.put("..", 'i');
+        map.put(".---", 'j');
+        map.put("-.-", 'k');
+        map.put(".-..", 'l');
+        map.put("--", 'm');
+        map.put("-.", 'n');
+        map.put("---", 'o');
+        map.put(".--.", 'p');
+        map.put("--.-", 'q');
+        map.put(".-.", 'r');
+        map.put("...", 's');
+        map.put("-", 't');
+        map.put("..-", 'u');
+        map.put("...-", 'v');
+        map.put(".--", 'w');
+        map.put("-..-", 'x');
+        map.put("-.--", 'y');
+        map.put("--..", 'z');
+            
+        String[] arr = letter.split(" ");
+        
+        for(String x : arr) {
+            
+            sb.append(map.get(x));
+        }
+        
+        return sb.toString();
+    }
+}
+```
+
+---
+
+두번째 풀이, 해시맵 수정, 0.2ms ~ 0.4ms
+
+```java
+import java.util.HashMap;
+
+class Solution {
+    public String solution(String letter) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        HashMap<String, Character> map = new HashMap<>() {
+            {
+            put(".-", 'a');
+            put("-...", 'b');
+            put("-.-.", 'c');
+            put("-..", 'd');
+            put(".", 'e');
+            put("..-.", 'f');
+            put("--.", 'g');
+            put("....", 'h');
+            put("..", 'i');
+            put(".---", 'j');
+            put("-.-", 'k');
+            put(".-..", 'l');
+            put("--", 'm');
+            put("-.", 'n');
+            put("---", 'o');
+            put(".--.", 'p');
+            put("--.-", 'q');
+            put(".-.", 'r');
+            put("...", 's');
+            put("-", 't');
+            put("..-", 'u');
+            put("...-", 'v');
+            put(".--", 'w');
+            put("-..-", 'x');
+            put("-.--", 'y');
+            put("--..", 'z');
+            }
+            
+        };
+        
+            
+        String[] arr = letter.split(" ");
+        
+        for(String x : arr) {
+            
+            sb.append(map.get(x));
+        }
+        
+        return sb.toString();
+    }
+}
+```
+
+---
+
+세번째 풀이, 배열, 0.1ms ~ 0.2ms
+
+```java
+class Solution {
+    public String solution(String letter) {
+        
+        String[] arr = {".-", "-...", "-.-.", "-..", ".", "..-.",
+                       "--.", "....", "..", ".---", "-.-", ".-..", 
+                       "--", "-.", "---", ".--.", "--.-", ".-.",
+                       "...", "-", "..-", "...-", ".--", "-..-",
+                       "-.--", "--.."};
+        
+        String[] mos = letter.split(" ");
+        
+        StringBuilder sb = new StringBuilder();
+        
+        for(int i=0; i<mos.length; i++) {
+            for(int j=0; j<arr.length; j++) {
+                if(mos[i].equals(arr[j])) sb.append((char) (j + 'a'));
+            }    
+        }
+        
+        return sb.toString();
+        
+    }
+}
+```
+
+---
+
+# 정리
+
+> 두 개로 짝 지어진 케이스가 있을 경우, 해시맵을 생각하면 좋다. 배열도 아스키코드값을 이용하여 짝지을 수도 있긴 하다.
