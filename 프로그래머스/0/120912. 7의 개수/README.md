@@ -68,3 +68,51 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+첫번째 풀이, 정규표현식
+
+```java
+class Solution {
+    public int solution(int[] array) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        for(int x : array) {
+            sb.append(String.valueOf(x));    
+        }
+        
+        return sb.toString().replaceAll("[^7]","").length(); // 정규표현식 이용하여 7을 제외한 나머지를 모두 날리고, 길이를 구하기
+        
+    }
+}
+```
+
+---
+
+두번째 풀이, 직접 구현
+
+```java
+class Solution {
+    public int solution(int[] array) {
+        
+        int cnt = 0;
+        
+        for(int x : array) {
+            
+            while(x > 0) {
+                
+                if(x % 10 == 7) cnt++;
+                
+                x /= 10;
+                
+            }
+            
+        }
+        
+        return cnt;
+        
+    }
+}
+```
