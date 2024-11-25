@@ -3,13 +3,12 @@ class Solution {
         
         int cnt = 0;
         
-        char t = String.valueOf(k).charAt(0);
         
         for(int a=i; a<=j; a++) {
             
             for(char x : String.valueOf(a).toCharArray()) {
                 
-                if(x == t) cnt++;
+                if(x - '0' == k) cnt++;
                     
             }
         }
