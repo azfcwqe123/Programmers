@@ -71,3 +71,64 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+첫번째 풀이, split(정규표현식)
+
+```java
+class Solution {
+    public int solution(String my_string) {
+        
+        String[] arr = my_string.split("[^0-9]+");
+        
+        int sum = 0;
+        
+        for(String x : arr) {
+            
+            if(!x.isEmpty()){
+                sum += Integer.parseInt(x);    
+            }
+        }
+        
+        return sum;
+        
+    }
+}
+```
+
+아래의 정규표현식은 모두 같은 뜻이다.
+```
+String[] arr = my_string.split("[^0-9]+");
+
+String[] arr = my_string.split("[^\\d]+");
+
+String[] arr = my_string.split("[a-z|A-Z]+");
+```
+
+\\\d 는 [0-9]을 의미한다.
+
+---
+
+두번째 풀이, replacaAll() + split()
+
+```java
+class Solution {
+    public int solution(String my_string) {
+        
+        String str = my_string.replaceAll("[^\\d]+", " ");
+        
+        String[] arr = str.split(" ");
+        
+        int sum = 0;
+        
+        for(String x : arr) {
+            if(!x.isEmpty()) sum += Integer.parseInt(x);
+        }
+        
+        return sum;
+        
+    }
+}
+```
