@@ -79,3 +79,58 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+내 풀이, 직접 구현, 0.3ms ~ 0.6ms
+
+```java
+class Solution {
+    public int[] solution(int[] arr) {
+        
+        int[] ans = new int[arr.length];
+        
+        for(int i=0; i<arr.length; i++) {
+            for(int j=0; j<arr.length; j++) {
+                
+                if(arr[i] <= arr[j]) ans[i]++;
+            }
+        }
+        
+        return ans;
+        
+    }
+}
+```
+
+---
+
+참고 풀이, Arrays.copyOfRage(), HashMap(), 0.3ms ~ 0.6ms
+
+```java
+import java.util.HashMap;
+import java.util.Arrays;
+import java.util.Map;
+
+class Solution {
+    public int[] solution(int[] emergency) {
+        
+        Map<Integer, Integer> map = new HashMap<>();
+        
+        int[] arr = Arrays.copyOfRange(emergency, 0, emergency.length);
+        
+        Arrays.sort(arr);
+        
+        for(int i=0; i<arr.length; i++) {
+            map.put(arr[i], arr.length - i);    
+        }
+        
+        for(int i=0; i<emergency.length; i++) {
+            emergency[i] = map.get(emergency[i]);
+        }
+        
+        return emergency;
+    }
+}
+```
