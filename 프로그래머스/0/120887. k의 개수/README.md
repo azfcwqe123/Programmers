@@ -86,3 +86,77 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+첫번째 풀이, toCharArray()
+```java
+class Solution {
+    public int solution(int i, int j, int k) {
+        
+        int cnt = 0;
+        
+        
+        for(int a=i; a<=j; a++) {
+            
+            for(char x : String.valueOf(a).toCharArray()) {
+                
+                if(x - '0' == k) cnt++;
+                    
+            }
+        }
+        
+        return cnt;
+    }
+}
+```
+
+---
+
+두번째 풀이, replaceAll()
+
+```java
+class Solution {
+    public int solution(int i, int j, int k) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        for(int a=i; a<=j; a++) {
+            sb.append(a);    
+        }
+        
+        return String.valueOf(sb).replaceAll("[^" + k  +"]", "").length();
+    }
+}
+```
+
+---
+
+세번째 풀이, 직접 구현
+
+```java
+class Solution {
+    public int solution(int i, int j, int k) {
+        
+        int cnt = 0;
+        
+        for(int a=i; a<=j; a++) {
+            
+            int tmp = a;
+            
+            while(tmp > 0) {
+                
+                if(tmp % 10 == k) cnt++;
+                
+                tmp /= 10;
+            }
+            
+        }
+        
+        return cnt;
+        
+
+    }
+}
+```
