@@ -71,3 +71,61 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+첫번째 풀이, indexOf(), 0.03ms
+
+```java
+class Solution {
+    public String solution(String my_string) {
+        
+        StringBuilder sb = new StringBuilder();
+        
+        for(int i=0; i<my_string.length(); i++) {
+            
+            char ch = my_string.charAt(i);
+                
+            if(my_string.indexOf(ch) == i) sb.append(ch);        
+        }
+        
+        return sb.toString();
+        
+    }
+}
+```
+
+---
+
+두번째 풀이(참고), 연결 해시셋(LinkedHashSet), 9ms ~ 15ms
+
+```java
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+class Solution {
+    public String solution(String my_string) {
+        
+        Set<Character> set = new LinkedHashSet<>();
+        
+        for(char x : my_string.toCharArray()) {            
+            set.add(x);
+        }
+        
+        String str = "";
+        
+        for(char x : set) {
+            str += x;
+        }  
+        
+        return str;
+        
+    }
+}
+```
+
+연결 해시셋은 해시셋보다 성능은 느릴 수 있지만, 입력된 순서를 보장한다는 점이 있다.
+
+
+---
