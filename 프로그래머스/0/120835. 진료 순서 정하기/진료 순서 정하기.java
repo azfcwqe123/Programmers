@@ -1,16 +1,25 @@
+import java.util.HashMap;
+import java.util.Arrays;
+import java.util.Map;
+
 class Solution {
-    public int[] solution(int[] arr) {
+    public int[] solution(int[] emergency) {
         
-        int[] ans = new int[arr.length];
+        Map<Integer, Integer> map = new HashMap<>();
         
-        for(int i=0; i<arr.length; i++) {
-            for(int j=0; j<arr.length; j++) {
-                
-                if(arr[i] <= arr[j]) ans[i]++;
-            }
+        int[] arr = Arrays.copyOfRange(emergency, 0, emergency.length);
+        
+        Arrays.sort(arr);
+        
+        for(int i=0; i<emergency.length; i++) {           
+            map.put(arr[i], arr.length - i);
         }
         
-        return ans;
+        for(int i=0; i<emergency.length; i++) {
+            emergency[i] = map.get(emergency[i]);
+        }
+        
+        return emergency;
         
     }
 }
