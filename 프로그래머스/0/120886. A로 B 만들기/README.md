@@ -71,3 +71,51 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+첫번째 풀이
+
+```java
+import java.util.Arrays;
+
+class Solution {
+    public int solution(String before, String after) {
+        
+        int[] arr1 = new int[26];
+        int[] arr2 = new int[26];
+        
+        for(char x : before.toCharArray()) {
+            arr1[x - 'a']++;
+        }
+        
+        for(char x : after.toCharArray()) {
+            arr2[x - 'a']++;
+        }
+        
+        return Arrays.equals(arr1,arr2) ? 1 : 0;
+    }
+}
+```
+
+---
+
+두번째 풀이 (참고)
+
+```java
+import java.util.Arrays;
+
+class Solution {
+    public int solution(String before, String after) {
+        
+        char[] arr1 = before.toCharArray();
+        char[] arr2 = after.toCharArray();
+        
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        
+        return Arrays.equals(arr1,arr2) ? 1 : 0;
+    }
+}
+```
