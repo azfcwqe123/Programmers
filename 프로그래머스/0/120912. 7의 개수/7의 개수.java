@@ -1,13 +1,21 @@
 class Solution {
     public int solution(int[] array) {
         
-        StringBuilder sb = new StringBuilder();
+        int cnt = 0;
         
         for(int x : array) {
-            sb.append(String.valueOf(x));    
+            
+            while(x > 0) {
+                
+                if(x % 10 == 7) cnt++;
+                
+                x /= 10;
+                
+            }
+            
         }
         
-        return sb.toString().replaceAll("[^7]","").length();
+        return cnt;
         
     }
 }
