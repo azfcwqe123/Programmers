@@ -1,16 +1,22 @@
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 class Solution {
     public String solution(String my_string) {
         
-        StringBuilder sb = new StringBuilder();
+        Set<Character> set = new LinkedHashSet<>();
         
-        for(int i=0; i<my_string.length(); i++) {
-            
-            char ch = my_string.charAt(i);
-                
-            if(my_string.indexOf(ch) == i) sb.append(ch);        
+        for(char x : my_string.toCharArray()) {            
+            set.add(x);
         }
         
-        return sb.toString();
+        String str = "";
+        
+        for(char x : set) {
+            str += x;
+        }  
+        
+        return str;
         
     }
 }
