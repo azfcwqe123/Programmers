@@ -80,3 +80,36 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+```java
+import java.util.ArrayList;
+
+class Solution {
+    public String[] solution(String my_str, int n) {
+  
+        ArrayList<String> list = new ArrayList<>();
+            
+        for(int i=0; i<my_str.length(); i += n) {
+            list.add(my_str.substring(i, Math.min(i+n, my_str.length())));
+        }         
+        
+        return list.toArray(String[]::new);
+        
+    }
+}
+
+```
+
+(0, 6)
+
+
+(6, 12)
+
+
+(12, 16)
+
+
+-> list.add(my_str.substring(i, Math.min(i+n, my_str.length())));
