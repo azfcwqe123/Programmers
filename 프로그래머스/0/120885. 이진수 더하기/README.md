@@ -73,3 +73,66 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+비트 연산자 + 스택 사용
+
+```java
+import java.util.Stack;
+
+class Solution {
+    public String solution(String bin1, String bin2) {
+        
+        int sum1 = 0, sum2 = 0;
+        
+        for(int i=0; i<bin1.length(); i++) {
+            sum1 += (bin1.charAt(i) - '0') << (bin1.length() -1 - i);
+        }
+        
+        for(int i=0; i<bin2.length(); i++) {
+            sum2 += (bin2.charAt(i) - '0') << (bin2.length() -1 - i);
+        }
+        
+        int n = sum1 + sum2;
+        
+        if (n == 0) {
+            return "0";
+        }
+        
+        Stack<Integer> stack = new Stack<>();
+        
+        while(n > 0) {
+            
+            stack.push(n%2);
+            
+            n /= 2;
+        }
+        
+        StringBuilder sb = new StringBuilder();
+        
+        while(!stack.isEmpty()) {
+            sb.append(stack.pop());
+        }
+        
+        return sb.toString();
+        
+        
+    }
+}
+```
+
+---
+
+Integer 메서드 이용
+
+```java
+class Solution {
+    public String solution(String a, String b) {
+        
+        return Integer.toString((Integer.parseInt(a, 2) + Integer.parseInt(b, 2)), 2);
+                
+    }
+}
+```
