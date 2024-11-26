@@ -70,3 +70,78 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+배열 풀이
+
+```java
+class Solution {
+    public int solution(String my_string) {
+        
+        String[] s = my_string.split(" ");
+        
+        int sum = Integer.parseInt(s[0]);
+        
+        for(int i=1; i<s.length; i++) {
+            
+            if(s[i].equals("+")) {
+                sum += Integer.parseInt(s[i+1]);
+                i++;
+            } 
+            
+            else if(s[i].equals("-")) {
+                sum -= Integer.parseInt(s[i+1]);
+                i++;
+            }       
+            
+        }
+        
+        return sum;
+        
+    }
+}
+```
+
+---
+
+스택 풀이, 배열로 푸는게 훨 낫다.
+
+```java
+import java.util.Stack;
+
+class Solution {
+    public int solution(String my_string) {
+        
+        String[] s = my_string.split(" ");
+        
+        Stack<String> stack = new Stack<>();
+        
+        int sum = 0;
+        
+        stack.push(s[0]);
+            
+        for(int i=1; i<s.length; i+=2) {
+            
+            if(s[i].equals("+")) {                
+                sum = Integer.parseInt(stack.pop()) + Integer.parseInt(s[i+1]);
+                stack.push(String.valueOf(sum));
+            }
+            
+            else if(s[i].equals("-")) {
+                sum = Integer.parseInt(stack.pop()) - Integer.parseInt(s[i+1]);
+                stack.push(String.valueOf(sum));
+            }            
+        }
+        
+        return Integer.parseInt(stack.pop());
+        
+    }
+}
+```
+
+---
+
+## 그림 설명
+
+![sadsadsa](https://github.com/user-attachments/assets/b2a70ead-42ca-40af-b327-c3e84cf713bd)
