@@ -105,3 +105,47 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+정석 풀이
+
+```java
+class Solution {
+    public int solution(int[] sides) {
+        
+        int cnt = 0;
+        
+        // case 1
+        int max_length = Math.max(sides[0], sides[1]);
+        int tmp = Math.min(sides[0], sides[1]);
+        
+        for(int i=1; i<max_length; i++) {
+            if(i + tmp > max_length) cnt++;
+        }
+        
+        // case 2        
+        for(int i = max_length; i< sides[0] + sides[1]; i++) {
+            if(sides[0] + sides[1] > i) cnt++;
+        }
+        
+        return cnt;
+            
+    }
+}
+```
+
+---
+
+야매
+
+```java
+class Solution {
+    public int solution(int[] sides) {
+        
+        return Math.min(sides[0], sides[1]) * 2 - 1;
+            
+    }
+}
+```
