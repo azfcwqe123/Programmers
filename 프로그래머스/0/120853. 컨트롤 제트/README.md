@@ -101,3 +101,68 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+배열 풀이
+
+```java
+class Solution {
+    public int solution(String s) {
+        
+        int sum = 0;
+        
+        String[] arr = s.split(" ");
+        
+        sum += Integer.parseInt(arr[0]);
+        
+        for(int i=1; i<arr.length; i++) {
+            
+            if(arr[i].equals("Z")) sum -= Integer.parseInt(arr[i-1]);
+            else sum += Integer.parseInt(arr[i]);
+            
+        }
+        
+        return sum;
+        
+    }
+}
+```
+
+---
+
+스택 풀이
+
+```java
+import java.util.Stack;
+
+class Solution {
+    public int solution(String s) {
+        
+        Stack<Integer> stack = new Stack<>();
+        
+        for(String x : s.split(" ")) {
+            
+            if(x.equals("Z")) stack.pop();
+            else stack.push(Integer.parseInt(x));
+            
+        }
+        
+        int sum = 0;
+        
+        for(int x : stack) {
+            sum += x;    
+        }
+        
+        return sum;
+        
+    }
+}
+```
+
+---
+
+## 그림 설명
+
+![ol](https://github.com/user-attachments/assets/8b72f736-fc1c-425a-b38e-7d2f205bd707)
