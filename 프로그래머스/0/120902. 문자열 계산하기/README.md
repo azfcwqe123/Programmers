@@ -70,3 +70,51 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+split() 사용
+
+```java
+class Solution {
+    public int solution(String my_string) {
+        
+        String[] s = my_string.split(" ");
+        
+        int sum = Integer.parseInt(s[0]);
+        
+        for(int i=1; i<s.length; i+=2) {
+            
+            if(s[i].equals("+")) {
+                sum += Integer.parseInt(s[i+1]);
+            } 
+            
+            else if(s[i].equals("-")) {
+                sum -= Integer.parseInt(s[i+1]);
+            }       
+            
+        }
+        
+        return sum;
+        
+    }
+}
+```
+
+예를 들어,
+
+"3 + 47 - 20 + 300" 이런 식으로 문자열이 주어졌다고 했을 때, split(" ") 메서드를 사용하면
+&nbsp;
+
+|3|+|47|-|20|+|300|
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|0|1|2|3|4|5|6|
+
+이런 배열이 생성될 것이다.
+
+그 후, 맨 앞에는 '+'나 '-'가 나올 수 없고 숫자만 나올테니, sum 총합에 첫번째 요소를 먼저 넣어놓는다.
+&nbsp;
+
+그 다음, 인덱스가 홀수 규칙으로 순회를 할텐데, 배열 인덱스에 해당하는 요소가 '+'인지 '-'인지 판단한 후, 앞에 있는 요소를 계산한다.
+
