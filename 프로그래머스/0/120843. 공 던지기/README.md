@@ -93,3 +93,35 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+
+---
+
+```java
+class Solution {
+    public int solution(int[] numbers, int k) {
+        
+        return numbers[(k-1) * 2 % numbers.length];
+        
+    }
+}
+
+```
+
+int[] numbers = {1, 2, 3, 4, 5, 6}, k=5인 경우
+
+1 2 3 4 5 6 / 7 8 9 10 11 12 / 13 14 15 ---
+
+0 1 2 3 4 5 / 6 7 8 9 10 11 / 12 13 14 ---
+&nbsp;
+
+시작은 k-1,
+
+0부터 짝수 인덱스들만 순회한다는 특징을 이용해야함.
+
+그리고 배열의 길이도 활용해야한다.
+
+
+
+
