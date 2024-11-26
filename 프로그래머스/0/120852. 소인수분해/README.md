@@ -77,3 +77,33 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+```java
+import java.util.ArrayList;
+
+class Solution {
+    public int[] solution(int n) {
+            
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        for(int i=2; i<=n; i++) {
+            
+            if(n % i == 0) { // i가 n의 약수라면
+                
+                list.add(i); // i를 배열리스트에 추가해준 다음,
+                
+                while(n % i == 0) { // n이 나머지가 나올때까지 i를 계속 나눠준다.
+                    n /= i;   
+                }         
+                
+            }
+        }
+        
+        return list.stream().mapToInt(i->i).toArray();
+        
+    }
+}
+```
