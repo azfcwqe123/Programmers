@@ -5,16 +5,14 @@ class Solution {
         
         int sum = Integer.parseInt(s[0]);
         
-        for(int i=1; i<s.length; i++) {
+        for(int i=1; i<s.length; i+=2) {
             
             if(s[i].equals("+")) {
                 sum += Integer.parseInt(s[i+1]);
-                i++;
             } 
             
             else if(s[i].equals("-")) {
                 sum -= Integer.parseInt(s[i+1]);
-                i++;
             }       
             
         }
