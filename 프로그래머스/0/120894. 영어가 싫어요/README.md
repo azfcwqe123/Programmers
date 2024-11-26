@@ -70,3 +70,43 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+정규 표현식 + 배열
+
+```java
+class Solution {
+    public long solution(String numbers) {
+        
+        String[] arr = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+        
+        for(int i=0; i<arr.length; i++) {
+            numbers = numbers.replace(arr[i], String.valueOf(i));    
+        }
+        
+        return Long.parseLong(numbers);
+        
+    }
+}
+```
+
+---
+
+정규 표현식만 이용
+
+```java
+class Solution {
+    public long solution(String numbers) {
+        
+        String str = numbers.replace("zero","0").replace("one","1")
+            .replace("two","2").replace("three","3").replace("four","4")
+            .replace("five","5").replace("six","6").replace("seven","7")
+            .replace("eight","8").replace("nine","9");
+        
+        return Long.parseLong(str);
+        
+        
+    }
+}
+```
