@@ -87,3 +87,41 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+참고 풀이
+```java
+class Solution {
+    public int solution(int balls, int share) {
+        
+        return combination(balls, share);
+        
+    }
+
+    public int combination(int n, int r) {
+        
+        if(n == r || r == 0) return 1;
+        else return combination(n-1, r-1) + combination(n-1, r);
+        
+    }    
+}
+```
+nCr = n-1Cr-1 + n-1Cr의 이항계수 성질을 이용해서 재귀함수로 풀어낸다.
+
+---
+
+이렇게 더 깔끔하게 가능하다.
+
+```java
+class Solution {
+    public int solution(int n, int r) {
+        
+        if(n == r || r == 0) return 1;
+            
+        else return solution(n-1, r-1) + solution(n-1, r);
+        
+    }    
+}
+```
