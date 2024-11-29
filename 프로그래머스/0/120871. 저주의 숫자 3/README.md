@@ -108,3 +108,27 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+```java
+class Solution {
+    public int solution(int n) {
+        
+        int ans = 0;
+        
+        for(int i=1; i<=n; i++) {
+            ans++;
+            
+            while(ans % 3 == 0 || String.valueOf(ans).contains("3")) {
+                ans++;
+            }
+            
+        }
+        
+        return ans;
+        
+    }
+}
+```
