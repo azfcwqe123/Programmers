@@ -120,7 +120,7 @@ class Solution {
         
         ArrayList<Integer> list = new ArrayList<>();
         
-        for(int[] t : score) {
+        for(int[] t : score) { // 향상된 for문에 2차원 배열을 사용할 수 있다.
             list.add(t[0] + t[1]);    
         }
         
