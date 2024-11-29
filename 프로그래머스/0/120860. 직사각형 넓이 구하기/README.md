@@ -70,3 +70,27 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+```java
+class Solution {
+    public int solution(int[][] dots) {
+        
+        int max_x = -500, min_x = 500, max_y = -500, min_y = 500;
+        
+        for(int i=0; i<4; i++) {
+            max_x = Math.max(dots[i][1], max_x);
+            min_x = Math.min(dots[i][1], min_x);
+            max_y = Math.max(dots[i][0], max_y);
+            min_y = Math.min(dots[i][0], min_y);
+        }
+        
+        return (max_x - min_x) * (max_y - min_y);
+        
+    }
+}
+```
+
+2차원 배열의 행의 길이는 4, 열의 길이는 2로 고정이니, 이를 이용하자.
