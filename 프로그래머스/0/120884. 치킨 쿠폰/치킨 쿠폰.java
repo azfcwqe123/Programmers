@@ -1,14 +1,13 @@
 class Solution {
     public int solution(int chicken) {
         
-        int coupon = 0;
-        
+        int coupon = chicken;
         int cnt = 0;
         
-        while(chicken >= 10) {
-            
-            cnt += chicken / 10;
-            chicken = (chicken / 10) + (chicken % 10);
+        while(coupon >= 10) {
+           
+            cnt += coupon / 10;
+            coupon = (coupon / 10) + (coupon % 10);
             
         }
         
