@@ -75,3 +75,31 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+참고 풀이, 로직 확실하게 이해하자. 직관도 중요
+
+```java
+class Solution {
+    public int solution(int chicken) {
+        
+        int coupon = chicken; // 치킨 한 마리당 쿠폰 하나
+        int cnt = 0;
+        
+        while(coupon >= 10) {
+           
+            cnt += coupon / 10;
+            coupon = (coupon / 10) + (coupon % 10);
+            
+        }
+        
+        return cnt;
+        
+    }
+}
+```
+
+https://school.programmers.co.kr/learn/courses/30/lessons/120884/solution_groups?language=java
+
