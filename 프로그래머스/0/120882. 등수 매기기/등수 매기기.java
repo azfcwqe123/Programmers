@@ -1,26 +1,27 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+
 class Solution {
     public int[] solution(int[][] score) {
         
-        int[] arr = new int[score.length];
+        ArrayList<Integer> list = new ArrayList<>();
+        
+        for(int[] t : score) {
+            list.add(t[0] + t[1]);    
+        }
+        
+        //Collections.sort(list, Comparator.reverseOrder());
+        list.sort(Comparator.reverseOrder());
+        
+        int[] ans = new int[score.length];
         
         for(int i=0; i<score.length; i++) {
-            arr[i] += score[i][0] + score[i][1];
+            ans[i] = list.indexOf(score[i][0] + score[i][1]) + 1;    
         }
         
+        return ans;
         
-        int[] res = new int[arr.length];
-        
-        for(int i=0; i<arr.length; i++) {      
-            
-            res[i]++;
-            
-            for(int j=0; j<arr.length; j++) {
-                if(arr[i] < arr[j]) res[i]++;
-            }
-            
-        }
-        
-        return res;
         
     }
 }
