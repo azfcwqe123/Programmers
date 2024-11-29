@@ -80,3 +80,50 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+---
+
+```java
+class Solution {
+    public int[] solution(String[] keyinput, int[] board) {
+        
+        int[] max_pos = {board[1] / 2, -(board[1] / 2), -(board[0] / 2), board[0] / 2 };
+        
+        int x = 0, y = 0;
+        
+        for(String s : keyinput) {
+            
+            if(s.equals("up")) {
+                if(y == max_pos[0]) continue;
+                else y++;
+            }
+            
+            if(s.equals("down")) {
+                if(y == max_pos[1]) continue;
+                else y--;
+            }
+            
+            if(s.equals("left")) {
+                if(x == max_pos[2]) continue;
+                else x--;
+            }
+            
+            if(s.equals("right")) {
+                if(x == max_pos[3]) continue;
+                else x++;
+            }            
+        }
+        
+        return new int[] {x, y};
+        
+    }
+}
+```
+
+> 예를 들어 board의 가로 크기가 9라면 캐릭터는 왼쪽으로 최대 [-4, 0]까지 오른쪽으로 최대 [4, 0]까지 이동할 수 있습니다.
+
+이 문장을 유의해야한다. 가로 크기가 9라면, 9를 2로 나눈 4가 최대 범위라는걸 확인할 수 있다. 세로도 마찬가지.
+
+그 이후, 범위를 벗어나는거면 continue을 써서 다음 keyinput을 확인한다.
+
+굳이 복잡하게 배열을 만들어서 풀 필요 없는 문제
