@@ -86,3 +86,23 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+```java
+class Solution {
+    public int solution(int M, int N) {
+
+        return (M-1) + M *(N-1);
+    }
+}
+```
+
+공식을 유도해야함.
+
+가로는 처음에 M-1개를 자르고
+
+세로는 기존 가로의 길이만큼 N-1개를 곱한값만큼 더하게 된다.
+
+그림 그리면서 하면 쉽게 확인할 수 있다.
