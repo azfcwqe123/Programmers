@@ -6,9 +6,6 @@ class Solution {
         for(int i=0; i<4; i++) {
             max_x = Math.max(dots[i][1], max_x);
             min_x = Math.min(dots[i][1], min_x);
-        }
-        
-        for(int i=0; i<4; i++) {
             max_y = Math.max(dots[i][0], max_y);
             min_y = Math.min(dots[i][0], min_y);
         }
