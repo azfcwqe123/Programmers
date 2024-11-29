@@ -96,3 +96,26 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+
+---
+
+내 풀이
+
+```java
+class Solution {
+    public int solution(String[] spell, String[] dic) {
+        
+        for(String x : dic) {
+            int cnt = 0;
+            for(String s : spell) {
+                if(x.contains(s)) cnt++;
+            }
+            if(cnt == spell.length) return 1;
+        }
+        
+        return 2;
+    }
+}
+```
+
+문자열 하나하나 각각의 스펠링을 비교해본다.
