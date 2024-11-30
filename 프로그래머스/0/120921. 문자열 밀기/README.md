@@ -97,3 +97,50 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+```java
+class Solution {
+    public int solution(String A, String B) {
+        
+        if(A.equals(B)) return 0;
+        
+        A += A;
+        
+        int len = B.length();
+        int cnt = 0;
+        
+        for(int i=len-1; i > 0; i--) {
+            String tmp = A.substring(i, i + len);
+            if(B.equals(tmp)) {
+                return ++cnt;
+            } else cnt++;
+        }
+        
+        return -1;
+        
+    }
+}
+```
+
+![sub](https://github.com/user-attachments/assets/0c670cc6-a80f-4031-83eb-774f2ec47a55)
+
+---
+
+참고 풀이 https://school.programmers.co.kr/learn/courses/30/lessons/120921/solution_groups?language=java
+
+```java
+class Solution {
+    public int solution(String A, String B) {
+        
+        String tmp = B.repeat(2);
+        
+        return tmp.indexOf(A);
+        
+    }
+}
+```
+
+indexOf() 활용한게 정말 깔끔해짐
