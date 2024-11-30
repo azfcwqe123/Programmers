@@ -1,35 +1,30 @@
-import java.util.HashSet;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 class Solution {
     public int solution(int[] array) {
         
-        int[] check = new int[1000];
-        
-        for(int x : array) {
-            check[x]++;
-        }
-        
-        int max = -1;
+        int max = 0;
         int ans = 0;
         
-        for(int i=0; i<1000; i++) {      
-            if(check[i] > max) {
-                max = check[i];
-                ans = i;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        
+        for(int x : array) {
+            
+            int cnt = map.getOrDefault(x, 0) + 1;
+            
+            if(cnt > max) {
+                max = cnt;
+                ans = x;
             }
+            
+            else if(cnt == max) {
+                ans = -1;    
+            }
+            
+            map.put(x, cnt);
         }
         
-        int cnt = 0;
-        
-        for(int i=0; i<1000; i++) {
-            if(max == check[i]) {
-                cnt++;
-            }
-        }
-        
-        if(cnt > 1) return -1;
-        else return ans;
+        return ans;
         
     }
 }
