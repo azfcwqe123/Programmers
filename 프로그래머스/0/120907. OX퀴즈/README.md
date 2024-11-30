@@ -73,3 +73,144 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+["19 - 6 = 13", "5 + 66 = 71", "5 - 15 = 63", "3 - 1 = 2"]
+
+["3 - 4 = -3", "5 + 6 = 11"]
+
+&nbsp;
+
+위 배열 요소들의 특징은, split(" ")으로 나누면 5개의 요소들이 각각 나온다는 점이다. 이부분을 활용해야됨.
+
+---
+
+첫 풀이
+
+```java
+class Solution {
+    public String[] solution(String[] quiz) {
+        
+        String[] OX = new String[quiz.length];
+        
+        for(int i = 0; i < quiz.length; i++) {
+            
+            String[] tmp = quiz[i].split(" ");
+            
+            int res1 = 0, res2 = 0;
+            
+            if(tmp[1].equals("+")) {
+                res1 += Integer.parseInt(tmp[0]) + Integer.parseInt(tmp[2]);
+            } else {
+                res1 += Integer.parseInt(tmp[0]) - Integer.parseInt(tmp[2]);
+            }
+            
+            if(tmp[4].equals("-")) res2 = -Integer.parseInt(tmp[4].replace("-",""));
+            else res2 = Integer.parseInt(tmp[4]);
+            
+            if(res1 == res2) OX[i] = "O";
+            else OX[i] = "X";
+            
+        }
+        
+        return OX;
+        
+    }
+}
+```
+
+---
+
+리팩토링1
+
+```java
+class Solution {
+    public String[] solution(String[] quiz) {
+        
+        String[] OX = new String[quiz.length];
+        
+        for(int i = 0; i < quiz.length; i++) {
+            
+            String[] tmp = quiz[i].split(" ");
+            
+            int res1 = 0, res2 = 0;
+            
+            if(tmp[1].equals("+")) {
+                res1 += Integer.parseInt(tmp[0]) + Integer.parseInt(tmp[2]);
+            } else {
+                res1 += Integer.parseInt(tmp[0]) - Integer.parseInt(tmp[2]); 
+            }
+            
+            if(tmp[4].equals("-")) res2 = Integer.parseInt(tmp[4]); // Integer.parseInt("-1")은 그대로 -1이 나온다.
+            else res2 = Integer.parseInt(tmp[4]);
+            
+            if(res1 == res2) OX[i] = "O";
+            else OX[i] = "X";
+            
+        }
+        
+        return OX;
+        
+    }
+}
+```
+
+---
+
+리팩토링2
+```java
+class Solution {
+    public String[] solution(String[] quiz) {
+        
+        String[] OX = new String[quiz.length];
+        
+        for(int i = 0; i < quiz.length; i++) {
+            
+            String[] tmp = quiz[i].split(" ");
+            
+            int res1 = 0, res2 = Integer.parseInt(tmp[4]);
+            
+            if(tmp[1].equals("+")) {
+                res1 += Integer.parseInt(tmp[0]) + Integer.parseInt(tmp[2]);
+            } else {
+                res1 += Integer.parseInt(tmp[0]) - Integer.parseInt(tmp[2]);
+            }            
+            
+            if(res1 == res2) OX[i] = "O";
+            else OX[i] = "X";
+            
+        }
+        
+        return OX;
+        
+    }
+}
+```
+
+---
+
+참고 풀이, 직관적임.
+
+```java
+class Solution {
+    public String[] solution(String[] quiz) {
+        
+        for(int i = 0; i < quiz.length; i++) {
+            
+            String[] tmp = quiz[i].split(" ");
+            
+            int res1 = Integer.parseInt(tmp[0]) + Integer.parseInt(tmp[2]) * (tmp[1].equals("+") ? 1 : -1);             
+            int res2 = Integer.parseInt(tmp[4]);
+
+            quiz[i] = (res1 == res2 ? "O" : "X");
+            
+        }
+        
+        return quiz;
+        
+    }
+}
+```
+---
