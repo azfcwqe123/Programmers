@@ -15,7 +15,7 @@ class Solution {
                 res1 += Integer.parseInt(tmp[0]) - Integer.parseInt(tmp[2]);
             }
             
-            if(tmp[4].equals("-")) res2 = -Integer.parseInt(tmp[4].replace("-",""));
+            if(tmp[4].equals("-")) res2 = Integer.parseInt(tmp[4]);
             else res2 = Integer.parseInt(tmp[4]);
             
             if(res1 == res2) OX[i] = "O";
