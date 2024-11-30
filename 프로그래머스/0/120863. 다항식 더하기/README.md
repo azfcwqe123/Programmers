@@ -79,3 +79,47 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+```java
+class Solution {
+    public String solution(String polynomial) {
+        
+        String[] arr = polynomial.split("\\s\\+\\s"); // \\s는 공백, \\+는 +이다.
+        
+        int x = 0;
+        int d = 0;
+        
+        for(String s : arr) {
+            
+            if(s.contains("x")) {
+                
+                if(s.replace("x", "").isEmpty()) x++;
+                else x += Integer.parseInt(s.replace("x", ""));
+            }
+            
+            else d += Integer.parseInt(s);
+            
+        }
+               
+
+        // 다항식 x의 계수가 1이면 x로 출력되는것까지 케이스를 고려해야한다.
+
+        if(x == 0 && d != 0) {
+            return String.valueOf(d);
+        }
+        else if(x != 0 && d == 0) {
+            if(x == 1) return "x";
+            else return x + "x";
+        }
+        else if(x != 0 && d != 0) {
+            if(x == 1) return "x + " + d;
+            else return x + "x + " + d;
+        }
+        
+        return "";
+    }                    
+}
+```
