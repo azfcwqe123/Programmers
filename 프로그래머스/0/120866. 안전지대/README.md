@@ -83,3 +83,48 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+내 풀이
+
+```java
+class Solution {
+    public int solution(int[][] board) {
+        
+        int[] dx = {-1, 0, 1, -1, 1, -1, 0, 1};
+        int[] dy = {-1, -1, -1, 0, 0, 1, 1, 1};
+        
+        int n = board.length;
+        
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<n; j++) {
+                
+                if(board[i][j] == 1) { // 지뢰가 있다면
+                    
+                    for(int k=0; k<8; k++) { // 팔방면으로
+                        if(i + dy[k] >= 0 && i + dy[k] < n && j + dx[k] >= 0 && j + dx[k] < n) { // 범위 확인하고
+                            if(board[i + dy[k]][j + dx[k]] != 1) { // 지뢰이 있는 지역은 제외하고
+                                board[i + dy[k]][j + dx[k]] = 2; // 2로 채운다.
+                            }
+                            
+                        }   
+                    }
+                    
+                }
+            }
+        }
+        
+        int cnt = 0;
+        
+        for(int i=0; i<n; i++) {
+            for(int j=0; j<n; j++) {
+                if(board[i][j] == 0) cnt++;
+            }
+        }
+        
+        return cnt;
+    }
+}
+```
