@@ -93,3 +93,36 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+arr[i]는 x~x+1의 범위를 갖게된다.
+
+```java
+class Solution {
+    public int solution(int[][] lines) {
+        
+        int[] arr = new int[200];
+        
+        for(int[] x : lines) {
+            
+            int a = x[0] + 100;
+            int b = x[1] + 100;
+            
+            for(int i=a; i<b; i++) {
+                arr[i]++;
+            }
+        }
+        
+        int cnt = 0;
+        
+        for(int x : arr) {
+            if(x > 1) cnt++;
+        }
+        
+        return cnt;
+        
+    }
+}
+```
