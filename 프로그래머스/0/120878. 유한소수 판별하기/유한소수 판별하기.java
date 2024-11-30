@@ -1,31 +1,26 @@
 class Solution {
     public int solution(int a, int b) {
-            
-        if(a == b) return 1;        
         
-        int tmp = 1;
+        b /= gcd(a,b);
         
-        for(int i=2; i<b; i++) {
-            if(a % i == 0 && b % i == 0) tmp = i;    
+        while(b % 2 == 0) {
+            b /= 2;            
         }
         
-        b /= tmp;
-        
-        while(true) {
-            
-            if(b % 2 == 0) b /= 2;
-            else break;
-            
+        while(b % 5 == 0) {          
+            b /= 5;
         }
         
-        while(true) {
-            
-            if(b % 5 == 0) b /= 5;
-            else break;
-        }
+        return b == 1 ? 1 : 2;
         
-        if(b == 1) return 1;
-        else return 2;
+    }
+    
+    private int gcd(int a, int b) {
+        
+        if(b == 0) {
+            return a;
+        }
+        return gcd(b, a % b);
         
     }
 }
