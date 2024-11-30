@@ -74,3 +74,21 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+등차가 아니면? 등비다
+```java
+class Solution {
+    public int solution(int[] arr) {
+    
+        if(arr[1] - arr[0] == arr[2] - arr[1]) {
+            return arr[arr.length - 1] + arr[1] - arr[0];
+        } else {
+            return arr[arr.length - 1] * (arr[1] / arr[0]);
+        }
+                
+    }
+}
+```
