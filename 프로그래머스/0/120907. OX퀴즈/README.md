@@ -191,7 +191,7 @@ class Solution {
 
 ---
 
-참고 풀이, 직관적임.
+참고 풀이, 직관적임. https://school.programmers.co.kr/learn/courses/30/lessons/120907/solution_groups?language=java
 
 ```java
 class Solution {
