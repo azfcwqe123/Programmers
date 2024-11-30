@@ -76,3 +76,71 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+첫번째 풀이
+
+```java
+import java.util.Arrays;
+
+class Solution {
+    public int[] solution(int[] numlist, int n) {
+        
+        Arrays.sort(numlist); // 정렬을 미리 해놓았기에, 큰 수가 나중에 작은수랑 자리를 바꿔서 같은 절댓값이라도 큰 수가 앞에 먼저 오게 된다.
+        
+        for(int i=0; i<numlist.length; i++) {
+            for(int j=0; j<numlist.length; j++) {
+                
+                if(Math.abs(numlist[i] - n) <= Math.abs(numlist[j] - n)) { // 자신보다 큰 절댓값이 있으면 스왑
+                    
+                    int tmp = numlist[i];
+                    numlist[i] = numlist[j];
+                    numlist[j] = tmp;
+                }
+                
+            }    
+        }
+        
+        return numlist;
+        
+    }
+    
+}
+```
+
+---
+
+두번째 풀이
+
+```java
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] numlist, int n) {
+        
+        ArrayList<Integer> list = new ArrayList<>(); 
+         
+        for(int x : numlist) {
+            list.add(x);
+        }
+        
+        Collections.sort(list, (a, b) -> { // 람다식 활용, Comparator 인터페이스의 compare 메서드가 생략됨
+            
+            int c = Math.abs(a - n);
+            int d = Math.abs(b - n);
+            
+            if(c == d) { // 절댓값이 같으면
+                return b - a; // 내림차순으로 정렬
+            }
+            
+            return c - d; // 절댓값으로 오름차순으로 정렬
+        });
+        
+        return list.stream().mapToInt(x->x).toArray();
+        
+    }
+    
+}
+```
