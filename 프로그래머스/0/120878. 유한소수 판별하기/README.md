@@ -102,3 +102,75 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+첫번째 풀이, 직접 구현
+
+```java
+class Solution {
+    public int solution(int a, int b) {
+            
+        if(a == b) return 1;        
+        
+        int tmp = 1;
+        
+        for(int i=2; i<b; i++) {
+            if(a % i == 0 && b % i == 0) tmp = i;    
+        }
+        
+        b /= tmp;
+        
+        while(true) {
+            
+            if(b % 2 == 0) b /= 2;
+            else break;
+            
+        }
+        
+        while(true) {
+            
+            if(b % 5 == 0) b /= 5;
+            else break;
+        }
+        
+        if(b == 1) return 1;
+        else return 2;
+        
+    }
+}
+```
+
+---
+
+참고 풀이, 유클리드 알고리즘, https://school.programmers.co.kr/learn/courses/30/lessons/120878/solution_groups?language=java
+
+```java
+class Solution {
+    public int solution(int a, int b) {
+        
+        b /= gcd(a,b);
+        
+        while(b % 2 == 0) {
+            b /= 2;            
+        }
+        
+        while(b % 5 == 0) {          
+            b /= 5;
+        }
+        
+        return b == 1 ? 1 : 2;
+        
+    }
+    
+    private int gcd(int a, int b) {
+        
+        if(b == 0) {
+            return a;
+        }
+        return gcd(b, a % b);
+        
+    }
+}
+```
