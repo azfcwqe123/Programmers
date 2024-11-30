@@ -76,3 +76,37 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+내 풀이
+
+```java
+class Solution {
+    public int[] solution(int numer1, int denom1, int numer2, int denom2) {
+        
+        int numer = (numer1 * denom2) + (numer2 * denom1); 
+        int denom = denom1 * denom2;
+        
+        int k = gcd(denom, numer);
+        
+        return new int[] {numer / k, denom / k};
+        
+    }
+    
+    private int gcd(int a, int b) {
+        
+        if(b==0) return a;
+        
+        return gcd(b, a % b);
+    }
+    
+}
+```
+
+분수를 먼저 더해주고,
+
+유클리드 알고리즘을 이용해서 최대 공약수를 찾은 다음
+
+더한 분자와 분모를 각각 최대공약수로 나눠주면 기약분수가 된다.
