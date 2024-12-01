@@ -86,3 +86,54 @@
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
+>
+
+---
+
+첫번째 풀이
+
+```java
+class Solution {
+    public int solution(String[] babbling) {
+        
+        int cnt = 0;
+        
+        for(String x : babbling) {
+            
+            x = x.replace("aya","1").replace("ye","1").replace("woo","1").replace("ma","1"); // 옹알이들을 1로 변환 후
+            
+            x = x.replaceAll("[0-9]", ""); // [0-9]까지 쓸 필요 없었지만 잘못씀. 아무튼 숫자를 제거함.
+            
+            if(x.isEmpty()) cnt++; // 숫자까지 제거했는데 문자가 남아있다면 불가능. 비어있을때는 센다.
+            
+        }
+        
+        return cnt;
+        
+    }
+}
+```
+
+---
+
+두번째 풀이
+
+```java
+class Solution {
+    public int solution(String[] babbling) {
+        
+        int cnt = 0;
+        
+        for(String x : babbling) {
+            
+            x = x.replaceAll("(aya|ye|woo|ma)", ""); // ()는 그룹화를 사용함. 옹알이들을 모두 없애버림. .replace()을 메서드 체이닝 하면 "wyeoo"에서 예외 케이스가 발생함. wyeoo -> woo -> "" 이렇게 되기 때문.
+            
+            if(x.isEmpty()) cnt++;
+            
+        }
+        
+        return cnt;
+        
+    }
+}
+```
