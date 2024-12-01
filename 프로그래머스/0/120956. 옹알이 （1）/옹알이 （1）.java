@@ -5,7 +5,7 @@ class Solution {
         
         for(String x : babbling) {
             
-            x = x.replace("aya","1").replace("ye","1").replace("woo","1").replace("ma","1");
+            x = x.replaceAll("(aya|ye|woo|ma)", "");
             
             x = x.replaceAll("[0-9]", "");
             
