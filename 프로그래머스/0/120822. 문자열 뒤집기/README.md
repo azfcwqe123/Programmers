@@ -85,8 +85,8 @@ class Solution {
         
         while(lt < rt) {
             char tmp = arr[lt];
-            arr[lt] = arr[rt];
-            arr[rt] = tmp;
+            arr[lt] = arr[rt]; // arr[lt++] = arr[rt]; 
+            arr[rt] = tmp; // arr[rt--] = tmp; 밑에있는 lt++, rt--을 지우고 이렇게 해도 맞긴함. 하지만 가독성이 좋지않음.
             
             lt++;
             rt--;
