@@ -123,5 +123,29 @@ int[] numbers = {1, 2, 3, 4, 5, 6}, k=5인 경우
 그리고 배열의 길이도 활용해야한다.
 
 
+---
 
+2024-12-05
 
+원형으로 둘러싸여있을때는, 큐도 고려하자
+
+```java
+import java.util.*;
+
+class Solution {
+    public int solution(int[] numbers, int k) {
+        
+        Queue<Integer> Q = new LinkedList<>();
+        
+        for(int x : numbers) Q.offer(x);
+        
+        while(k-- > 1) {
+            Q.offer(Q.poll());
+            Q.offer(Q.poll());    
+        }
+        
+        return Q.poll();
+    }
+}
+
+```
